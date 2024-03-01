@@ -228,6 +228,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &712297274
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 44d257b2057565d498244067a253756b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.12033725
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44d257b2057565d498244067a253756b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.004383892
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44d257b2057565d498244067a253756b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.69505596
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44d257b2057565d498244067a253756b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44d257b2057565d498244067a253756b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44d257b2057565d498244067a253756b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44d257b2057565d498244067a253756b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44d257b2057565d498244067a253756b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44d257b2057565d498244067a253756b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44d257b2057565d498244067a253756b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44d257b2057565d498244067a253756b, type: 3}
+      propertyPath: m_Name
+      value: SedanWheel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 44d257b2057565d498244067a253756b, type: 3}
 --- !u!1 &1258284906 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2041585429665642586, guid: 782461597edbafc4fa03ac8e71d132c5, type: 3}
@@ -266,8 +323,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efb3eb114d17d14f8e1c9ae9fa972f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
-  rotationSpeed: 100
+  speed: 13
+  rotationSpeed: 110
   maxSteerAngle: 30
 --- !u!54 &1258284909
 Rigidbody:
@@ -546,6 +603,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blue Sedan
       objectReference: {fileID: 0}
+    - target: {fileID: 2041585429665642586, guid: 782461597edbafc4fa03ac8e71d132c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -568,5 +629,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1821499200}
+  - {fileID: 712297274}
   - {fileID: 1941855629}
   - {fileID: 359147791}
