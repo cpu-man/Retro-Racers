@@ -3,7 +3,22 @@ guid: 44d257b2057565d498244067a253756b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_Car
+    second: {fileID: 2100000, guid: cf0d5facd0d79fa4fb6cfff9470bc058, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_Lights
+    second: {fileID: 2100000, guid: 22fa7ba44aefa4649b8a86cdbd23522e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_Windows
+    second: {fileID: 2100000, guid: 392fa1dfee9b1a9438eabd35fb216abc, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

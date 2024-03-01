@@ -25,6 +25,7 @@ public class SimpleCarController : MonoBehaviour
 
         // Apply movement and rotation to the car
         rb.MovePosition(rb.position + movement);
+        if(movement.magnitude >0.1f)
         rb.MoveRotation(rb.rotation * rotation);
     }
 }
