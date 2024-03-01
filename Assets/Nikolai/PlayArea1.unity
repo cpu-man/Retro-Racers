@@ -168,7 +168,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 2
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -592,13 +592,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629598544}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.03693102, y: -0, z: -0, w: 0.9993178}
-  m_LocalPosition: {x: 0.0023372471, y: 1.34, z: -0.24}
+  m_LocalRotation: {x: 0.043082982, y: -0, z: -0, w: 0.9990716}
+  m_LocalPosition: {x: -0.24000001, y: 1.34, z: -0.22000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1184476232}
-  m_LocalEulerAnglesHint: {x: 4.233, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 4.938, y: 0, z: 0}
 --- !u!81 &1629598546
 AudioListener:
   m_ObjectHideFlags: 0
@@ -640,7 +640,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 44
+  field of view: 53
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
