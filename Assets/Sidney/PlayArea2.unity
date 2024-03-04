@@ -464,6 +464,7 @@ MonoBehaviour:
   maxSpeed: 10
   rotationSpeed: 110
   maxSteerAngle: 30
+  torque: 2000
 --- !u!54 &1258284909
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -519,9 +520,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 5
-  maxSpeed: 22
+  maxSpeed: 23
   rotationSpeed: 100
   maxSteerAngle: 30
+  torque: 2000
 --- !u!54 &1559204295
 Rigidbody:
   m_ObjectHideFlags: 0
