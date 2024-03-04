@@ -858,9 +858,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efb3eb114d17d14f8e1c9ae9fa972f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  acceleration: 5
+  maxSpeed: 120
   rotationSpeed: 100
-  maxSteerAngle: 30
+  maxSteerAngle: 35
+  torque: 2000
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
