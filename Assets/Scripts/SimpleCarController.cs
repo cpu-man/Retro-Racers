@@ -29,9 +29,10 @@ public class SimpleCarController : MonoBehaviour
         // Apply forward force for acceleration
         rb.AddForce(transform.forward * currentSpeed, ForceMode.Acceleration);
 
+
         // Apply steering torque
         float turnTorque = steerInput * torque * Time.fixedDeltaTime;
-        rb.AddTorque(transform.up * turnTorque);
+        rb.AddRelativeTorque(transform.up * turnTorque);
 
         // Limit the maximum turn torque
         float currentAngularVelocity = rb.angularVelocity.y;
