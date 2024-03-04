@@ -9,10 +9,11 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: MAT_Blue_Sedan_Windows
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: 3d333dda6d9d9b6499e221eee6be8d3b, type: 2}
+  m_Parent: {fileID: 2100000, guid: 27c1627742e5e374888e7694364558e7, type: 2}
   m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
   - _ALPHAPREMULTIPLY_ON
+  - _EMISSION
   - _GLOSSYREFLECTIONS_OFF
   - _METALLICGLOSSMAP
   m_InvalidKeywords:
