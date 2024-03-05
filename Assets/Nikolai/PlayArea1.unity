@@ -635,13 +635,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011261284}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.13380904, y: -0, z: -0, w: 0.9910072}
+  m_LocalPosition: {x: 0, y: 3.46, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15.38, y: 0, z: 0}
 --- !u!1 &1076410392
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,10 +671,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2275303789408491001}
-  - {fileID: 5211209316759357794}
-  - {fileID: 6927398038884270461}
   - {fileID: 5523035274783898698}
+  - {fileID: 6927398038884270461}
+  - {fileID: 5211209316759357794}
+  - {fileID: 2275303789408491001}
   m_Father: {fileID: 1548199681104133644}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1092168257
@@ -1214,8 +1214,13 @@ MonoBehaviour:
   frontLeft: {fileID: 1927721813}
   backRight: {fileID: 153040510}
   backLeft: {fileID: 1571733910}
+  frontRightTransform: {fileID: 5523035274783898698}
+  frontLeftTransform: {fileID: 6927398038884270461}
+  backRightTransform: {fileID: 5211209316759357794}
+  backLeftTransform: {fileID: 2275303789408491001}
   acceleration: 500
   breakingForce: 300
+  maxTurnAngle: 30
 --- !u!1 &2272544267747445756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,7 +1233,7 @@ GameObject:
   - component: {fileID: 4692793705099797935}
   - component: {fileID: 4144973538469169722}
   m_Layer: 0
-  m_Name: MSH_Volga_Tire_BackR
+  m_Name: BackRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1314,7 +1319,7 @@ GameObject:
   - component: {fileID: 791992911833427124}
   - component: {fileID: 2320636340674237168}
   m_Layer: 0
-  m_Name: MSH_Volga_Tire_BackL
+  m_Name: BackLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1437,7 +1442,7 @@ GameObject:
   - component: {fileID: 161961861321399680}
   - component: {fileID: 6840105402869024729}
   m_Layer: 0
-  m_Name: MSH_Volga_Tire_FrontL
+  m_Name: FrontLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1616,7 +1621,7 @@ GameObject:
   - component: {fileID: 2377732351067279372}
   - component: {fileID: 3314329844460680082}
   m_Layer: 0
-  m_Name: MSH_Volga_Tire_FrontR
+  m_Name: FrontRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

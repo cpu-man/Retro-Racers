@@ -7,6 +7,11 @@ public class wheelController : MonoBehaviour
     [SerializeField] WheelCollider backRight;
     [SerializeField] WheelCollider backLeft;
 
+    [SerializeField] Transform frontRightTransform;
+    [SerializeField] Transform frontLeftTransform;
+    [SerializeField] Transform backRightTransform;
+    [SerializeField] Transform backLeftTransform;
+
     public float acceleration = 500f;
     public float breakingForce = 300f;
     public float maxTurnAngle = 15f;
@@ -20,7 +25,7 @@ public class wheelController : MonoBehaviour
 
 
 
-        //Get forward/reverse acceleration from the vertical axis (w and s keys)
+        // Get forward/reverse acceleration from the vertical axis (w and s keys).
         currentAcceleration = acceleration * Input.GetAxis("Vertical");
 
         // If we're pressing space, give currentBrekingForce a value.
@@ -29,20 +34,38 @@ public class wheelController : MonoBehaviour
         else
             currentBreakForce = 0f;
 
-        //apply acceleration to front wheels
+        // apply acceleration to front wheels.
         frontRight.motorTorque = currentAcceleration;
         frontLeft.motorTorque = currentAcceleration;
 
-        //apply breaking force to all wheels
+        // apply breaking force to all wheels.
         frontRight.brakeTorque= currentBreakForce;
         frontLeft.brakeTorque = currentBreakForce;
         backLeft.brakeTorque = currentBreakForce;
         backRight.brakeTorque = currentBreakForce;
 
-        //take care of the steering
+        // take care of the steering.
         currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
         frontLeft.steerAngle = currentTurnAngle;
         frontRight.steerAngle = currentTurnAngle;
 
+        // Update wheel meshes
+        UpdateWheel(frontLeft, frontLeftTransform);
+        UpdateWheel(frontRight, frontRightTransform);
+        UpdateWheel(backLeft, backLeftTransform);
+        UpdateWheel(backRight, backRightTransform);
+
+    }
+
+    void UpdateWheel(WheelCollider col, Transform trans)
+    {
+        // get wheel collider state.
+        Vector3 postition;
+        Quaternion rotation;
+        col.GetWorldPose(out postition, out rotation);
+
+        // get wheel transform state.
+        trans.position = postition;
+        trans.rotation = rotation;
     }
 }
