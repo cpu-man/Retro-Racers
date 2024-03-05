@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 455226295}
   - component: {fileID: 455226296}
   m_Layer: 0
-  m_Name: Wheel collider_Tire_BackR
+  m_Name: Wheel Rear Right Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 953767571}
   - component: {fileID: 953767572}
   m_Layer: 0
-  m_Name: Wheel collider_Tire_FrontR
+  m_Name: Wheel Front Right Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -807,7 +807,7 @@ GameObject:
   - component: {fileID: 1803383007}
   - component: {fileID: 1803383008}
   m_Layer: 0
-  m_Name: Wheel collider_Tire_FrontL
+  m_Name: Wheel Front Left Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -895,7 +895,7 @@ GameObject:
   - component: {fileID: 1818787957}
   - component: {fileID: 1818787958}
   m_Layer: 0
-  m_Name: Wheel collider_Tire_BackL
+  m_Name: Wheel Rear Left Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
