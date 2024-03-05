@@ -15,7 +15,13 @@ public class wheelController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+
+
         //Get forward/reverse acceleration from the vertical axis (w and s keys)
+        currentAcceleration = acceleration * Input.GetAxis("Vertical");
+
+        // If we're pressing space, give currentBrekingForce a value.
         if (Input.GetKey(KeyCode.Space))
             currentBreakForce = breakingForce;
         else
@@ -27,5 +33,7 @@ public class wheelController : MonoBehaviour
 
         frontRight.brakeTorque= currentBreakForce;
         frontLeft.brakeTorque = currentBreakForce;
+        backLeft.brakeTorque = currentBreakForce;
+        backRight.brakeTorque = currentBreakForce;
     }
 }
