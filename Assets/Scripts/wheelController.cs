@@ -9,9 +9,11 @@ public class wheelController : MonoBehaviour
 
     public float acceleration = 500f;
     public float breakingForce = 300f;
+    public float maxTurnAngle = 15f;
 
     private float currentAcceleration;
     private float currentBreakForce = 0f;
+    private float currentTurnAngle = 0f;
 
     private void FixedUpdate()
     {
@@ -31,9 +33,16 @@ public class wheelController : MonoBehaviour
         frontRight.motorTorque = currentAcceleration;
         frontLeft.motorTorque = currentAcceleration;
 
+        //apply breaking force to all wheels
         frontRight.brakeTorque= currentBreakForce;
         frontLeft.brakeTorque = currentBreakForce;
         backLeft.brakeTorque = currentBreakForce;
         backRight.brakeTorque = currentBreakForce;
+
+        //take care of the steering
+        currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
+        frontLeft.steerAngle = currentTurnAngle;
+        frontRight.steerAngle = currentTurnAngle;
+
     }
 }
