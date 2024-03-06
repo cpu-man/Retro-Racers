@@ -19,6 +19,19 @@ public class wheelController : MonoBehaviour
     private float currentAcceleration;
     private float currentBreakForce = 0f;
     private float currentTurnAngle = 0f;
+    public float centreOfGravityOffset = -1f;
+
+    Rigidbody rigidBody;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        rigidBody = GetComponent<Rigidbody>();
+
+        // Adjust center of mass vertically, to help prevent the car from rolling
+        rigidBody.centerOfMass += Vector3.up * centreOfGravityOffset;
+
+    }
 
     private void FixedUpdate()
     {
