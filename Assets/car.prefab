@@ -579,7 +579,7 @@ MonoBehaviour:
   backRightTransform: {fileID: 5350934672526534882}
   backLeftTransform: {fileID: 6506777131197764097}
   acceleration: 500
-  maxSpeed: 170
+  maxSpeed: 200
   breakingForce: 300
   maxTurnAngle: 30
   centreOfGravityOffset: -1
