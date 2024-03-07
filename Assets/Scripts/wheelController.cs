@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class wheelController : MonoBehaviour
 {
-    private SteeringWheelAnimation steeringWheelAnimation; // Reference to SteeringWheelAnimation script
-
+    
     [SerializeField] WheelCollider frontRight;
     [SerializeField] WheelCollider frontLeft;
     [SerializeField] WheelCollider backRight;
@@ -35,9 +34,6 @@ public class wheelController : MonoBehaviour
 
         // Adjust center of mass vertically, to help prevent the car from rolling
         rigidBody.centerOfMass += Vector3.up * centreOfGravityOffset;
-
-        // Search for the SteeringWheelAnimation script on a child GameObject
-        steeringWheelAnimation = GetComponentInChildren<SteeringWheelAnimation>();
 
     }
 
