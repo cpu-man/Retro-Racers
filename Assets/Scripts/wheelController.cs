@@ -90,11 +90,14 @@ public class wheelController : MonoBehaviour
         UpdateWheel(backLeft, backLeftTransform);
         UpdateWheel(backRight, backRightTransform);
 
-        // Control the animation based on the turn angle
+        // Control the animation based on the turn angle and wheel rotation
         if (steeringWheelAnimation != null)
         {
             float normalizedTurnAngle = currentTurnAngle / maxTurnAngle;
-            steeringWheelAnimation["SteeringWheelAnimation"].normalizedTime = Mathf.Abs(normalizedTurnAngle);
+            float maxRotation = Mathf.Max(frontLeftTransform.localEulerAngles.y, frontRightTransform.localEulerAngles.y);
+            float normalizedRotation = maxRotation / maxTurnAngle;
+            float normalizedAnimationTime = Mathf.Max(Mathf.Abs(normalizedTurnAngle), normalizedRotation);
+            steeringWheelAnimation["SteeringWheelAnimation"].normalizedTime = Mathf.Clamp01(normalizedAnimationTime);
             steeringWheelAnimation.Play("SteeringWheelAnimation");
         }
 
