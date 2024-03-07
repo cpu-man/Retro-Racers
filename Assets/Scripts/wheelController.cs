@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class wheelController : MonoBehaviour
 {
+    
     [SerializeField] WheelCollider frontRight;
     [SerializeField] WheelCollider frontLeft;
     [SerializeField] WheelCollider backRight;
@@ -25,6 +26,7 @@ public class wheelController : MonoBehaviour
     
 
     private Rigidbody rigidBody;
+    private Animation steeringWheelAnimation; // Reference to the steering wheel animation
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,9 @@ public class wheelController : MonoBehaviour
 
         // Adjust center of mass vertically, to help prevent the car from rolling
         rigidBody.centerOfMass += Vector3.up * centreOfGravityOffset;
+
+        // Get the Animation component from the GameObject that contains your animation
+        steeringWheelAnimation = GetComponentInChildren<Animation>(); // Adjust this based on your hierarchy
 
     }
 
@@ -84,6 +89,17 @@ public class wheelController : MonoBehaviour
         UpdateWheel(frontRight, frontRightTransform);
         UpdateWheel(backLeft, backLeftTransform);
         UpdateWheel(backRight, backRightTransform);
+
+        // Control the animation based on the turn angle and wheel rotation
+        if (steeringWheelAnimation != null)
+        {
+            float normalizedTurnAngle = currentTurnAngle / maxTurnAngle;
+            float maxRotation = Mathf.Max(frontLeftTransform.localEulerAngles.y, frontRightTransform.localEulerAngles.y);
+            float normalizedRotation = maxRotation / maxTurnAngle;
+            float normalizedAnimationTime = Mathf.Max(Mathf.Abs(normalizedTurnAngle), normalizedRotation);
+            steeringWheelAnimation["SteeringWheelAnimation"].normalizedTime = Mathf.Clamp01(normalizedAnimationTime);
+            steeringWheelAnimation.Play("SteeringWheelAnimation");
+        }
 
     }
 
