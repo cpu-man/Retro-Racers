@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 1462419480113729249}
   - component: {fileID: 3749765535859316365}
   - component: {fileID: 797152093435062110}
+  - component: {fileID: 6885254590601032327}
   m_Layer: 0
   m_Name: CarInterior
   m_TagString: Untagged
@@ -379,6 +380,28 @@ MonoBehaviour:
   _PostProcessShaderAccurate: {fileID: 4800000, guid: 2ebed186567d3c244a87538744a62920, type: 3}
   _PixelationShader: {fileID: 4800000, guid: f2da0e2a14a532548b5db043244b3df1, type: 3}
   _InterlacingShader: {fileID: 4800000, guid: 03ebd34214b41ef459d7ee6753b062be, type: 3}
+--- !u!114 &6885254590601032327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2788553210161301427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1a4c69f7a9d3ea43907b5765229dc85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _TextureWarpingFactor: 0.822
+  _TextureWarpingMode: 0
+  _VertexGridResolution: 100
+  _VertexWobbleMode: 0
+  _UseRetroVertexLighting: 1
+  _RetroLightingNormalFactor: 0
+  _RetroLightFalloffStart: 0
+  _FlatShadingMode: 0
+  _TriangleSortMode: 0
+  _DepthDebugView: 0
 --- !u!1 &2966958470998174287
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,8 +602,10 @@ MonoBehaviour:
   backRightTransform: {fileID: 5350934672526534882}
   backLeftTransform: {fileID: 6506777131197764097}
   acceleration: 500
+  maxSpeed: 200
   breakingForce: 300
-  maxTurnAngle: 15
+  maxTurnAngle: 30
+  centreOfGravityOffset: -1
 --- !u!1 &6097852771146859384
 GameObject:
   m_ObjectHideFlags: 0
