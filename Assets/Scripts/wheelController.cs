@@ -20,8 +20,9 @@ public class wheelController : MonoBehaviour
     public float maxSpeed = 20f;  // Maximum speed of the car
     public float breakingForce = 300f;
     public float maxTurnAngle = 15f;
+    public float brakingFriction = 2.0f; // Adjust this to control the friction during braking
 
-    
+
     //private float currentAcceleration;
     private float currentBreakForce = 0f;
     //private float currentTurnAngle = 0f;
@@ -70,7 +71,11 @@ public class wheelController : MonoBehaviour
         else
             currentBreakForce = 0f;
 
-
+        // Apply braking friction
+        frontRight.brakeTorque = currentBreakForce * brakingFriction;
+        frontLeft.brakeTorque = currentBreakForce * brakingFriction;
+        backLeft.brakeTorque = currentBreakForce * brakingFriction;
+        backRight.brakeTorque = currentBreakForce * brakingFriction;
 
         // apply Apply torque to front wheels
         frontRight.motorTorque = currentAcceleration;
