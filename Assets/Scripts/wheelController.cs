@@ -21,6 +21,8 @@ public class wheelController : MonoBehaviour
     public float breakingForce = 300f;
     public float maxTurnAngle = 15f;
     public float brakingFriction = 2.0f; // Adjust this to control the friction during braking
+    public float driftFriction = 0.8f; // Adjust this to control lateral friction during drifting
+    public float driftControl = 0.2f; // Adjust this to control drifting responsiveness
 
 
     //private float currentAcceleration;
@@ -87,10 +89,25 @@ public class wheelController : MonoBehaviour
         backLeft.brakeTorque = currentBreakForce;
         backRight.brakeTorque = currentBreakForce;
 
+        float currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
+
+        // Modify steering for drifting
+        if (forwardSpeed > 0 && Input.GetKey(KeyCode.LeftShift)) // Assuming Left Shift initiates drifting
+        {
+            frontLeft.steerAngle = currentTurnAngle - (maxTurnAngle * driftControl);
+            frontRight.steerAngle = currentTurnAngle + (maxTurnAngle * driftControl);
+        }
+        else
+        {
+            frontLeft.steerAngle = currentTurnAngle;
+            frontRight.steerAngle = currentTurnAngle;
+        }
+        /*
         // take care of the steering.
         float currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
         frontLeft.steerAngle = currentTurnAngle;
         frontRight.steerAngle = currentTurnAngle;
+        */
 
         // Update wheel meshes
         UpdateWheel(frontLeft, frontLeftTransform);
