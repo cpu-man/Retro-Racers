@@ -911,6 +911,12 @@ MonoBehaviour:
   frontLeftTransform: {fileID: 754321802006033155}
   backRightTransform: {fileID: 5350934672526534882}
   backLeftTransform: {fileID: 6506777131197764097}
+  headlights:
+  - {fileID: 7741034356632657930}
+  - {fileID: 5885982029804154026}
+  taillights:
+  - {fileID: 1332804414547183169}
+  - {fileID: 7385583234144586146}
   acceleration: 500
   maxSpeed: 200
   breakingForce: 300
