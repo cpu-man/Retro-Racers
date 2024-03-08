@@ -628,9 +628,17 @@ PrefabInstance:
       propertyPath: m_CenterOfMass.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2425650085056673961, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.665
+      objectReference: {fileID: 0}
     - target: {fileID: 4781135820419617240, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_Name
       value: car
+      objectReference: {fileID: 0}
+    - target: {fileID: 6224369622587851989, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.654
       objectReference: {fileID: 0}
     - target: {fileID: 7822845152994127506, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_LocalPosition.x

@@ -13,6 +13,9 @@ public class wheelController : MonoBehaviour
     [SerializeField] Transform backRightTransform;
     [SerializeField] Transform backLeftTransform;
 
+    [SerializeField] Light[] headlights; // Reference to headlights
+    [SerializeField] Light[] taillights; // Reference to taillights
+
     public float acceleration = 500f;
     public float maxSpeed = 20f;  // Maximum speed of the car
     public float breakingForce = 300f;
@@ -101,6 +104,13 @@ public class wheelController : MonoBehaviour
             steeringWheelAnimation.Play("SteeringWheelAnimation");
         }
 
+        // Control the lights
+        if (Input.GetKeyDown(KeyCode.L)) // Example key to toggle lights
+        {
+            ToggleHeadlights();
+            ToggleTaillights();
+        }
+
     }
 
     void UpdateWheel(WheelCollider col, Transform trans)
@@ -113,5 +123,23 @@ public class wheelController : MonoBehaviour
         // get wheel transform state.
         trans.position = postition;
         trans.rotation = rotation;
+    }
+
+    // Method to toggle headlights
+    void ToggleHeadlights()
+    {
+        foreach (Light headlight in headlights)
+        {
+            headlight.enabled = !headlight.enabled;
+        }
+    }
+
+    // Method to toggle taillights
+    void ToggleTaillights()
+    {
+        foreach (Light taillight in taillights)
+        {
+            taillight.enabled = !taillight.enabled;
+        }
     }
 }
