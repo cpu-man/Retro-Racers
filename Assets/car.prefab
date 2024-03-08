@@ -920,7 +920,7 @@ MonoBehaviour:
   - {fileID: 7385583234144586146}
   acceleration: 500
   maxSpeed: 200
-  breakingForce: 300
+  breakingForce: 600
   maxTurnAngle: 30
   centreOfGravityOffset: -1
 --- !u!114 &5405568453416810097
