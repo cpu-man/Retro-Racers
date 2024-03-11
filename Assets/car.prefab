@@ -127,23 +127,23 @@ WheelCollider:
   m_GameObject: {fileID: 639769150079211173}
   serializedVersion: 2
   m_Center: {x: 0, y: 0.15, z: 0}
-  m_Radius: 0.35
+  m_Radius: 0.33
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 75000
+    damper: 5500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 80
   m_WheelDampingRate: 0.26
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
-    m_AsymptoteValue: 0.5
+    m_ExtremumSlip: 2
+    m_ExtremumValue: 5
+    m_AsymptoteSlip: 5
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
@@ -330,23 +330,23 @@ WheelCollider:
   m_GameObject: {fileID: 1487595761306916590}
   serializedVersion: 2
   m_Center: {x: 0, y: 0.15, z: 0}
-  m_Radius: 0.35
+  m_Radius: 0.33
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 75000
+    damper: 5500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 80
   m_WheelDampingRate: 0.26
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
-    m_AsymptoteValue: 0.5
+    m_ExtremumSlip: 2
+    m_ExtremumValue: 5
+    m_AsymptoteSlip: 5
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
@@ -915,7 +915,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.63, y: 1.69, z: 4.83777}
-  m_Center: {x: -0.000000029802322, y: 1.09, z: -0.045955896}
+  m_Center: {x: -0.000000029802322, y: 1.03, z: -0.045955896}
 --- !u!114 &708246666784564138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -948,8 +948,6 @@ MonoBehaviour:
   breakingForce: 3000
   maxTurnAngle: 30
   brakingFriction: 2
-  driftFriction: 0.8
-  driftControl: 0.2
   centreOfGravityOffset: -1
 --- !u!114 &5405568453416810097
 MonoBehaviour:
@@ -5967,23 +5965,23 @@ WheelCollider:
   m_GameObject: {fileID: 6097852771146859384}
   serializedVersion: 2
   m_Center: {x: 0, y: 0.15, z: 0}
-  m_Radius: 0.35
+  m_Radius: 0.33
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 75000
+    damper: 5500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 80
   m_WheelDampingRate: 0.26
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
-    m_AsymptoteValue: 0.5
+    m_ExtremumSlip: 2
+    m_ExtremumValue: 5
+    m_AsymptoteSlip: 5
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
@@ -6307,23 +6305,23 @@ WheelCollider:
   m_GameObject: {fileID: 7722357187312563460}
   serializedVersion: 2
   m_Center: {x: 0, y: 0.15, z: 0}
-  m_Radius: 0.35
+  m_Radius: 0.33
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 75000
+    damper: 5500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 80
   m_WheelDampingRate: 0.26
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
-    m_AsymptoteValue: 0.5
+    m_ExtremumSlip: 2
+    m_ExtremumValue: 5
+    m_AsymptoteSlip: 5
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
