@@ -928,6 +928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de76d4ba1d51524b8ff031b4198f172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SteeringWheelTrans: {fileID: 6094591538095430463}
   frontRight: {fileID: 1535773102021056974}
   frontLeft: {fileID: 9081855711392115676}
   backRight: {fileID: 4793768158016206885}
@@ -946,6 +947,9 @@ MonoBehaviour:
   maxSpeed: 200
   breakingForce: 600
   maxTurnAngle: 30
+  brakingFriction: 2
+  driftFriction: 0.8
+  driftControl: 0.2
   centreOfGravityOffset: -1
 --- !u!114 &5405568453416810097
 MonoBehaviour:

@@ -504,6 +504,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &955929852 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6094591538095430463, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+  m_PrefabInstance: {fileID: 1054744271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &983414429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7822845152994127506, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
@@ -526,8 +531,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 708246666784564138, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: SteeringWheelTrans
+      value: 
+      objectReference: {fileID: 955929852}
+    - target: {fileID: 708246666784564138, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: centreOfGravityOffset
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881495892978732445, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4781135820419617240, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_Name
