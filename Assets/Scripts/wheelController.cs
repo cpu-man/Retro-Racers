@@ -41,6 +41,7 @@ public class wheelController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
 
         // Adjust center of mass vertically, to help prevent the car from rolling
+
         rigidBody.centerOfMass += Vector3.up * centreOfGravityOffset;
 
         // Get the Animation component from the GameObject that contains your animation
