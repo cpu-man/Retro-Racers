@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class wheelController : MonoBehaviour
 {
+    [SerializeField] Transform SteeringWheelTrans;
     
     [SerializeField] WheelCollider frontRight;
     [SerializeField] WheelCollider frontLeft;
@@ -118,13 +119,25 @@ public class wheelController : MonoBehaviour
         // Control the animation based on the turn angle and wheel rotation
         if (steeringWheelAnimation != null)
         {
+            /*
             float normalizedTurnAngle = currentTurnAngle / maxTurnAngle;
             float maxRotation = Mathf.Max(frontLeftTransform.localEulerAngles.y, frontRightTransform.localEulerAngles.y);
             float normalizedRotation = maxRotation / maxTurnAngle;
             float normalizedAnimationTime = Mathf.Max(Mathf.Abs(normalizedTurnAngle), normalizedRotation);
             steeringWheelAnimation["SteeringWheelAnimation"].normalizedTime = Mathf.Clamp01(normalizedAnimationTime);
-            steeringWheelAnimation.Play("SteeringWheelAnimation");
+            steeringWheelAnimation.Play("SteeringWheelAnimation");*/
+            
+
         }
+
+        // gives input a negative and positive depending on if you press 'A' or 'D'
+        float inputHori = Input.GetAxis("Horizontal");
+
+        // multiplies by 1
+        float multiplier = 1;
+        if (inputHori > 0) multiplier = -1;
+
+        SteeringWheelTrans.eulerAngles = new Vector3(23.891f, 0, Mathf.Lerp(0, 90 * multiplier, Mathf.Abs(inputHori)));
 
         // Control the lights
         if (Input.GetKeyDown(KeyCode.L)) // Example key to toggle lights
