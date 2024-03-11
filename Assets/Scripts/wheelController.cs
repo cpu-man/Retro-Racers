@@ -35,6 +35,8 @@ public class wheelController : MonoBehaviour
     private Rigidbody rigidBody;
     private Animation steeringWheelAnimation; // Reference to the steering wheel animation
 
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +44,7 @@ public class wheelController : MonoBehaviour
 
         // Adjust center of mass vertically, to help prevent the car from rolling
 
-        rigidBody.centerOfMass += Vector3.up * centreOfGravityOffset;
+        rigidBody.centerOfMass += new Vector3(0, 0, centreOfGravityOffset);
 
         // Get the Animation component from the GameObject that contains your animation
         steeringWheelAnimation = GetComponentInChildren<Animation>(); // Adjust this based on your hierarchy
