@@ -497,6 +497,10 @@ PrefabInstance:
       value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 708246666784564138, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: centreOfGravityOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 708246666784564138, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: headlights.Array.size
       value: 2
       objectReference: {fileID: 0}
