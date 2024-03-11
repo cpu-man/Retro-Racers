@@ -129,8 +129,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0.15, z: 0}
   m_Radius: 0.33
   m_SuspensionSpring:
-    spring: 75000
-    damper: 5500
+    spring: 50000
+    damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -332,8 +332,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0.15, z: 0}
   m_Radius: 0.33
   m_SuspensionSpring:
-    spring: 75000
-    damper: 5500
+    spring: 50000
+    damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -944,8 +944,8 @@ MonoBehaviour:
   - {fileID: 1332804414547183169}
   - {fileID: 7385583234144586146}
   acceleration: 1000
-  maxSpeed: 450
-  breakingForce: 3000
+  maxSpeed: 500
+  breakingForce: 600
   maxTurnAngle: 30
   brakingFriction: 2
   centreOfGravityOffset: -1
@@ -5967,8 +5967,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0.15, z: 0}
   m_Radius: 0.33
   m_SuspensionSpring:
-    spring: 75000
-    damper: 5500
+    spring: 50000
+    damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -6307,8 +6307,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0.15, z: 0}
   m_Radius: 0.33
   m_SuspensionSpring:
-    spring: 75000
-    damper: 5500
+    spring: 50000
+    damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0

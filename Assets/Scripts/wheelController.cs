@@ -22,19 +22,18 @@ public class wheelController : MonoBehaviour
     public float breakingForce = 300f;
     public float maxTurnAngle = 15f;
     public float brakingFriction = 2.0f; // Adjust this to control the friction during braking
-    //public float driftFriction = 0.8f; // Adjust this to control lateral friction during drifting
-    //public float driftControl = 0.2f; // Adjust this to control drifting responsiveness
+    public float driftFriction = 0.8f; // Adjust this to control lateral friction during drifting
+    public float driftControl = 0.2f; // Adjust this to control drifting responsiveness
 
 
     //private float currentAcceleration;
     private float currentBreakForce = 0f;
     //private float currentTurnAngle = 0f;
-    public float centreOfGravityOffset = -1f;
     
 
     private Rigidbody rigidBody;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +41,7 @@ public class wheelController : MonoBehaviour
 
         // Adjust center of mass vertically, to help prevent the car from rolling
 
-        rigidBody.centerOfMass += new Vector3(0, 0, centreOfGravityOffset);
+        rigidBody.centerOfMass += new Vector3(0, -1f, 0);
 
     }
 
@@ -88,9 +87,8 @@ public class wheelController : MonoBehaviour
         backLeft.brakeTorque = currentBreakForce;
         backRight.brakeTorque = currentBreakForce;
 
-        //float currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
+        float currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
 
-        /*
         // Modify steering for drifting
         if (forwardSpeed > 0 && Input.GetKey(KeyCode.LeftShift)) // Assuming Left Shift initiates drifting
         {
@@ -102,13 +100,13 @@ public class wheelController : MonoBehaviour
             frontLeft.steerAngle = currentTurnAngle;
             frontRight.steerAngle = currentTurnAngle;
         }
-        */
         
+        /*
         // take care of the steering.
         float currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
         frontLeft.steerAngle = currentTurnAngle;
         frontRight.steerAngle = currentTurnAngle;
-        
+        */
 
         // Update wheel meshes
         UpdateWheel(frontLeft, frontLeftTransform);
