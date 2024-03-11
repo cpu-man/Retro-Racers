@@ -33,8 +33,6 @@ public class wheelController : MonoBehaviour
     
 
     private Rigidbody rigidBody;
-    private Animation steeringWheelAnimation; // Reference to the steering wheel animation
-
 
     
     // Start is called before the first frame update
@@ -45,9 +43,6 @@ public class wheelController : MonoBehaviour
         // Adjust center of mass vertically, to help prevent the car from rolling
 
         rigidBody.centerOfMass += new Vector3(0, 0, centreOfGravityOffset);
-
-        // Get the Animation component from the GameObject that contains your animation
-        steeringWheelAnimation = GetComponentInChildren<Animation>(); // Adjust this based on your hierarchy
 
     }
 
@@ -119,19 +114,7 @@ public class wheelController : MonoBehaviour
         UpdateWheel(backLeft, backLeftTransform);
         UpdateWheel(backRight, backRightTransform);
 
-        // Control the animation based on the turn angle and wheel rotation
-        if (steeringWheelAnimation != null)
-        {
-            /*
-            float normalizedTurnAngle = currentTurnAngle / maxTurnAngle;
-            float maxRotation = Mathf.Max(frontLeftTransform.localEulerAngles.y, frontRightTransform.localEulerAngles.y);
-            float normalizedRotation = maxRotation / maxTurnAngle;
-            float normalizedAnimationTime = Mathf.Max(Mathf.Abs(normalizedTurnAngle), normalizedRotation);
-            steeringWheelAnimation["SteeringWheelAnimation"].normalizedTime = Mathf.Clamp01(normalizedAnimationTime);
-            steeringWheelAnimation.Play("SteeringWheelAnimation");*/
-            
-
-        }
+      
 
         // gives input a negative and positive depending on if you press 'A' or 'D'
         float inputHori = Input.GetAxis("Horizontal");
