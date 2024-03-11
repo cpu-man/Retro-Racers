@@ -135,15 +135,15 @@ WheelCollider:
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 80
-  m_WheelDampingRate: 0.26
+  m_WheelDampingRate: 0.3
   m_ForwardFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 0.8
+    m_ExtremumSlip: 0.4
+    m_ExtremumValue: 0.9
     m_AsymptoteSlip: 0.3
     m_AsymptoteValue: 1
     m_Stiffness: 0.9
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.01
+    m_ExtremumSlip: 0.03
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.6
     m_AsymptoteValue: 7.5
@@ -338,15 +338,15 @@ WheelCollider:
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 80
-  m_WheelDampingRate: 0.26
+  m_WheelDampingRate: 0.3
   m_ForwardFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 0.8
+    m_ExtremumSlip: 0.4
+    m_ExtremumValue: 0.9
     m_AsymptoteSlip: 0.3
     m_AsymptoteValue: 1
     m_Stiffness: 0.9
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.01
+    m_ExtremumSlip: 0.03
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.6
     m_AsymptoteValue: 7.5
@@ -5974,15 +5974,15 @@ WheelCollider:
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 80
-  m_WheelDampingRate: 0.26
+  m_WheelDampingRate: 0.3
   m_ForwardFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 0.8
+    m_ExtremumSlip: 0.4
+    m_ExtremumValue: 0.9
     m_AsymptoteSlip: 0.3
     m_AsymptoteValue: 1
     m_Stiffness: 0.9
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.01
+    m_ExtremumSlip: 0.03
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.6
     m_AsymptoteValue: 7.5
@@ -6314,15 +6314,15 @@ WheelCollider:
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 80
-  m_WheelDampingRate: 0.26
+  m_WheelDampingRate: 0.3
   m_ForwardFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 0.8
+    m_ExtremumSlip: 0.4
+    m_ExtremumValue: 0.9
     m_AsymptoteSlip: 0.3
     m_AsymptoteValue: 1
     m_Stiffness: 0.9
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.01
+    m_ExtremumSlip: 0.03
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.6
     m_AsymptoteValue: 7.5

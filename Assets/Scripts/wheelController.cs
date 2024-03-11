@@ -71,11 +71,17 @@ public class wheelController : MonoBehaviour
         else
             currentBreakForce = 0f;
 
+        // Gradually reduce speed when not accelerating or braking
+        if (!Input.GetKey(KeyCode.Space) && Mathf.Approximately(currentAcceleration, 0f))
+        {
+            currentAcceleration -= Time.fixedDeltaTime * acceleration * brakingFriction;
+        }
+
         // Apply braking friction
-        frontRight.brakeTorque = currentBreakForce * brakingFriction;
-        frontLeft.brakeTorque = currentBreakForce * brakingFriction;
-        backLeft.brakeTorque = currentBreakForce * brakingFriction;
-        backRight.brakeTorque = currentBreakForce * brakingFriction;
+        frontRight.brakeTorque = currentBreakForce * (brakingFriction + speedFactor); // Adjust friction dynamically based on speed;
+        frontLeft.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
+        backLeft.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
+        backRight.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
 
         // apply Apply torque to front wheels
         frontRight.motorTorque = currentAcceleration;
@@ -88,6 +94,12 @@ public class wheelController : MonoBehaviour
         backRight.brakeTorque = currentBreakForce;
 
         float currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
+
+        // Modify steering for high speeds
+        if (Mathf.Abs(forwardSpeed) > maxSpeed * 0.75f)
+        {
+            currentTurnAngle *= 0.5f; // Reduce steering angle at high speeds
+        }
 
         // Modify steering for drifting
         if (forwardSpeed > 0 && Input.GetKey(KeyCode.LeftShift)) // Assuming Left Shift initiates drifting
