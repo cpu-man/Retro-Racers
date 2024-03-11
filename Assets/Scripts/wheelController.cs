@@ -137,7 +137,7 @@ public class wheelController : MonoBehaviour
         float multiplier = 1;
         if (inputHori > 0) multiplier = -1;
 
-        SteeringWheelTrans.eulerAngles = new Vector3(23.891f, 0, Mathf.Lerp(0, 90 * multiplier, Mathf.Abs(inputHori)));
+        SteeringWheelTrans.localEulerAngles = new Vector3(23.891f, 0, Mathf.Lerp(0, 90 * multiplier, Mathf.Abs(inputHori)));
 
         // Control the lights
         if (Input.GetKeyDown(KeyCode.L)) // Example key to toggle lights
