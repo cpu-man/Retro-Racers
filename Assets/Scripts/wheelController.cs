@@ -1,4 +1,5 @@
 using UnityEngine;
+using LogitechGSDK;
 
 public class wheelController : MonoBehaviour
 {
@@ -40,16 +41,22 @@ public class wheelController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
 
         // Adjust center of mass vertically, to help prevent the car from rolling
-
         rigidBody.centerOfMass += new Vector3(0, -1f, 0);
 
+        // Initialize Logitech G29 SDK
+        LogitechGSDK.LogiSteeringInitialize(false);
     }
 
     private void FixedUpdate()
     {
+        // Read steering input from Logitech G29
+        float steeringInput = LogitechGSDK.LogiGetSteeringInput();
 
         // Get forward/reverse acceleration from the vertical axis (w and s keys).
-        float currentAcceleration = acceleration * Input.GetAxis("Vertical");
+        //float currentAcceleration = acceleration * Input.GetAxis("Vertical");
+
+        // Get forward/reverse acceleration from the vertical axis (pedals)
+        float currentAcceleration = acceleration * LogitechGSDK.LogiGetAcceleratorPedalRaw();
 
         // Calculate current speed in relation to the forward direction of the car
         // (this returns a negative number when traveling backwards)
@@ -61,10 +68,13 @@ public class wheelController : MonoBehaviour
 
         // Use that to calculate how much torque is available 
         // (zero torque at top speed)
-        float currentMotorTorque = Mathf.Lerp(0, acceleration, speedFactor);
+        //float currentMotorTorque = Mathf.Lerp(0, acceleration, speedFactor);
 
+        // Calculate braking force
+        float brakingFrictionFactor = brakingFriction + speedFactor;
+        currentBreakForce = breakingForce * LogitechGSDK.LogiGetBrakePedalRaw();
 
-        
+        /*
         // If we're pressing space, give currentBrekingForce a value.
         if (Input.GetKey(KeyCode.Space))
             currentBreakForce = breakingForce;
@@ -76,23 +86,31 @@ public class wheelController : MonoBehaviour
         {
             currentAcceleration -= Time.fixedDeltaTime * acceleration * brakingFriction;
         }
+        */
 
         // Apply braking friction
-        frontRight.brakeTorque = currentBreakForce * (brakingFriction + speedFactor); // Adjust friction dynamically based on speed;
-        frontLeft.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
-        backLeft.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
-        backRight.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
+        frontRight.brakeTorque = currentBreakForce * brakingFrictionFactor;
+        frontLeft.brakeTorque = currentBreakForce * brakingFrictionFactor;
+        backLeft.brakeTorque = currentBreakForce * brakingFrictionFactor;
+        backRight.brakeTorque = currentBreakForce * brakingFrictionFactor;
 
         // apply Apply torque to front wheels
         frontRight.motorTorque = currentAcceleration;
         frontLeft.motorTorque = currentAcceleration;
 
+        // Apply steering angle to front wheels
+        float currentTurnAngle = maxTurnAngle * steeringInput;
+        frontRight.steerAngle = currentTurnAngle;
+        frontLeft.steerAngle = currentTurnAngle;
+        /*
         // apply breaking force to all wheels.
         frontRight.brakeTorque= currentBreakForce;
         frontLeft.brakeTorque = currentBreakForce;
         backLeft.brakeTorque = currentBreakForce;
         backRight.brakeTorque = currentBreakForce;
+        */
 
+        /*
         float currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
 
         // Modify steering for high speeds
@@ -112,7 +130,8 @@ public class wheelController : MonoBehaviour
             frontLeft.steerAngle = currentTurnAngle;
             frontRight.steerAngle = currentTurnAngle;
         }
-        
+        */
+
         /*
         // take care of the steering.
         float currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
@@ -126,8 +145,10 @@ public class wheelController : MonoBehaviour
         UpdateWheel(backLeft, backLeftTransform);
         UpdateWheel(backRight, backRightTransform);
 
-      
+        // Update visual representation of steering wheel
+        UpdateSteeringWheelVisual(steeringInput);
 
+        /*
         // gives input a negative and positive depending on if you press 'A' or 'D'
         float inputHori = Input.GetAxis("Horizontal");
 
@@ -143,6 +164,7 @@ public class wheelController : MonoBehaviour
             ToggleHeadlights();
             ToggleTaillights();
         }
+        */
 
     }
 
@@ -156,6 +178,12 @@ public class wheelController : MonoBehaviour
         // get wheel transform state.
         trans.position = postition;
         trans.rotation = rotation;
+    }
+
+    private void UpdateSteeringWheelVisual(float input)
+    {
+        float rotationAngle = Mathf.Lerp(0, 90 * input, Mathf.Abs(input));
+        SteeringWheelTrans.localEulerAngles = new Vector3(23.891f, 0, rotationAngle);
     }
 
     // Method to toggle headlights
@@ -174,5 +202,11 @@ public class wheelController : MonoBehaviour
         {
             taillight.enabled = !taillight.enabled;
         }
+    }
+
+    private void OnDestroy()
+    {
+        // Cleanup Logitech G29 SDK
+        LogitechGSDK.LogiSteeringShutdown();
     }
 }
