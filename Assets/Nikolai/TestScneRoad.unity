@@ -621,6 +621,10 @@ PrefabInstance:
       propertyPath: centreOfGravityOffset
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 856003537352887081, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 1445689958362296925, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_Drag
       value: 0.1
@@ -1242,13 +1246,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076148287}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.19229004, y: -0.04045239, z: 0.004505546, w: 0.9804937}
-  m_LocalPosition: {x: -0, y: 13.2, z: 406.4}
+  m_LocalRotation: {x: -0.18128695, y: -0.0013384434, z: -0.0030193846, w: 0.9834247}
+  m_LocalPosition: {x: 0, y: 13.07, z: 406.4}
   m_LocalScale: {x: 6, y: 1, z: 10.5444}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -22.13, y: -5.02, z: 1.509}
+  m_LocalEulerAnglesHint: {x: -20.89, y: -0.094, z: -0.334}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
