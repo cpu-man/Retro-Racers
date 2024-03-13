@@ -129,12 +129,12 @@ WheelCollider:
   m_Center: {x: 0, y: 0.15, z: 0}
   m_Radius: 0.33
   m_SuspensionSpring:
-    spring: 50000
-    damper: 4500
+    spring: 3875
+    damper: 7425
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 80
+  m_Mass: 160
   m_WheelDampingRate: 0.3
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -332,12 +332,12 @@ WheelCollider:
   m_Center: {x: 0, y: 0.15, z: 0}
   m_Radius: 0.33
   m_SuspensionSpring:
-    spring: 50000
-    damper: 4500
+    spring: 3875
+    damper: 7425
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 80
+  m_Mass: 160
   m_WheelDampingRate: 0.3
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -855,7 +855,7 @@ Rigidbody:
   m_GameObject: {fileID: 4781135820419617240}
   serializedVersion: 4
   m_Mass: 1580
-  m_Drag: 0
+  m_Drag: 0.1
   m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -928,7 +928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de76d4ba1d51524b8ff031b4198f172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SteeringWheelTrans: {fileID: 6094591538095430463}
+  steeringWheelTrans: {fileID: 6094591538095430463}
   frontRight: {fileID: 1535773102021056974}
   frontLeft: {fileID: 9081855711392115676}
   backRight: {fileID: 4793768158016206885}
@@ -948,8 +948,8 @@ MonoBehaviour:
   breakingForce: 600
   maxTurnAngle: 30
   brakingFriction: 2
-  driftFriction: 0.8
   driftControl: 0.2
+  handbrakeForce: 1000
 --- !u!114 &5405568453416810097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5968,12 +5968,12 @@ WheelCollider:
   m_Center: {x: 0, y: 0.15, z: 0}
   m_Radius: 0.33
   m_SuspensionSpring:
-    spring: 50000
-    damper: 4500
+    spring: 3875
+    damper: 7425
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 80
+  m_Mass: 160
   m_WheelDampingRate: 0.3
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -6308,12 +6308,12 @@ WheelCollider:
   m_Center: {x: 0, y: 0.15, z: 0}
   m_Radius: 0.33
   m_SuspensionSpring:
-    spring: 50000
-    damper: 4500
+    spring: 3875
+    damper: 7425
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 80
+  m_Mass: 160
   m_WheelDampingRate: 0.3
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
