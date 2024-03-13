@@ -61,8 +61,9 @@ public class wheelController : MonoBehaviour
             isHandbrakeActivated = false;
         }
 
-        // Calculate current speed in km/h
-        float forwardSpeed = Vector3.Dot(transform.forward, rigidBody.linearVelocity) * 3.6f;
+        // Calculate current speed in relation to the forward direction of the car
+        // (this returns a negative number when traveling backwards)
+        float forwardSpeed = Vector3.Dot(transform.forward, rigidBody.linearVelocity);
 
         // Calculate slope of the ground underneath the car
         float slopeAngle = GetSlopeAngle();
@@ -88,38 +89,22 @@ public class wheelController : MonoBehaviour
             }
         }
 
-        // Convert maxSpeed from km/h to m/s
-        float maxSpeedMS = maxSpeed / 3.6f;
-
         // Set throttle input for the engine
         engine.SetThrottle(verticalInput);
 
         // Apply torque from the engine
         float engineTorque = engine.GetCurrentTorque();
-        //float engineTorque = engine.ApplyThrottle(verticalInput);
         frontRight.motorTorque = engineTorque;
         frontLeft.motorTorque = engineTorque;
-
-        // Limit the maximum speed in km/h
-        if (forwardSpeed > maxSpeed)
-        {
-            // Calculate the velocity required to reach maxSpeed
-            Vector3 targetVelocity = transform.forward * (maxSpeed / 3.6f);
-            // Apply a braking force to gradually reduce the speed
-            rigidBody.linearVelocity = Vector3.Lerp(rigidBody.linearVelocity, targetVelocity, Time.deltaTime * brakingFriction);
-        }
 
         // Modify steering
         float currentTurnAngle = maxTurnAngle * horizontalInput;
         float turnMultiplier = 1f;
 
-        
-        /*
         if (forwardSpeed > maxSpeed * 0.75f)
         {
             turnMultiplier = 0.5f; // Reduce steering angle at high speeds
         }
-        */
 
         // Modify steering for drifting
         if (forwardSpeed > 0 && Input.GetKey(KeyCode.LeftShift)) // Assuming Left Shift initiates drifting
