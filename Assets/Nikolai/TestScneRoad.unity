@@ -540,6 +540,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.63, y: 1.69, z: 4.83777}
   m_Center: {x: -0.000000029802322, y: 1.03, z: -0.045955896}
+--- !u!54 &983414443 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 1445689958362296925, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+  m_PrefabInstance: {fileID: 1054744271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1054744271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -932,6 +937,7 @@ PrefabInstance:
     - {fileID: 0}
     - {fileID: 7118302730881774571, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
     - {fileID: 519968618460093630, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+    - {fileID: 3353797276969360297, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7822845152994127506, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
@@ -944,7 +950,29 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4781135820419617240, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       insertIndex: 4
       addedObject: {fileID: 983414437}
+    - targetCorrespondingSourceObject: {fileID: 4975448480312273791, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1766386279}
   m_SourcePrefab: {fileID: 100100000, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+--- !u!1 &1766386275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4975448480312273791, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+  m_PrefabInstance: {fileID: 1054744271}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1766386279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766386275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b0f322237dfbc4d8ef5efbdd8996d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carRigidbody: {fileID: 983414443}
+  emissionRateMultiplier: 10
 --- !u!1 &2058083907
 GameObject:
   m_ObjectHideFlags: 0
