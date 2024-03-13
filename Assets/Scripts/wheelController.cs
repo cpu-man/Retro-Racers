@@ -55,6 +55,9 @@ public class wheelController : MonoBehaviour
         // (this returns a negative number when traveling backwards)
         float forwardSpeed = Vector3.Dot(transform.forward, rigidBody.linearVelocity);
 
+        // Calculate slope of the ground underneath the car
+        float slopeAngle = GetSlopeAngle();
+
         // Calculate how close the car is to top speed
         // as a number from zero to one
         float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed));
@@ -112,7 +115,9 @@ public class wheelController : MonoBehaviour
             frontLeft.steerAngle = currentTurnAngle;
             frontRight.steerAngle = currentTurnAngle;
         }
+
         
+
         /*
         // take care of the steering.
         float currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
@@ -146,18 +151,6 @@ public class wheelController : MonoBehaviour
 
     }
 
-    void UpdateWheel(WheelCollider col, Transform trans)
-    {
-        // get wheel collider state.
-        Vector3 postition;
-        Quaternion rotation;
-        col.GetWorldPose(out postition, out rotation);
-
-        // get wheel transform state.
-        trans.position = postition;
-        trans.rotation = rotation;
-    }
-
     // Method to toggle headlights
     void ToggleHeadlights()
     {
@@ -175,4 +168,29 @@ public class wheelController : MonoBehaviour
             taillight.enabled = !taillight.enabled;
         }
     }
+
+    void UpdateWheel(WheelCollider col, Transform trans)
+    {
+        // get wheel collider state.
+        Vector3 postition;
+        Quaternion rotation;
+        col.GetWorldPose(out postition, out rotation);
+
+        // get wheel transform state.
+        trans.position = postition;
+        trans.rotation = rotation;
+    }
+
+    // Method to get the slope angle of the ground underneath the car
+    float GetSlopeAngle()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f))
+        {
+            return Vector3.Angle(hit.normal, Vector3.up);
+        }
+        return 0f;
+    }
+
+    
 }
