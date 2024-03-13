@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class wheelController : MonoBehaviour
 {
-    [SerializeField] Transform SteeringWheelTrans;
-    
+    [SerializeField] Transform steeringWheelTrans;
+
     [SerializeField] WheelCollider frontRight;
     [SerializeField] WheelCollider frontLeft;
     [SerializeField] WheelCollider backRight;
@@ -22,9 +22,8 @@ public class wheelController : MonoBehaviour
     public float breakingForce = 300f;
     public float maxTurnAngle = 15f;
     public float brakingFriction = 2.0f; // Adjust this to control the friction during braking
-    //public float driftFriction = 0.8f; // Adjust this to control lateral friction during drifting
     public float driftControl = 0.2f; // Adjust this to control drifting responsiveness
-    
+
     private Rigidbody rigidBody;
     private float currentBreakForce = 0f;
     private float horizontalInput;
@@ -38,7 +37,6 @@ public class wheelController : MonoBehaviour
 
         // Adjust center of mass vertically, to help prevent the car from rolling
         rigidBody.centerOfMass += new Vector3(0, -1f, 0);
-
     }
 
     private void FixedUpdate()
@@ -50,12 +48,6 @@ public class wheelController : MonoBehaviour
         // Calculate current speed in relation to the forward direction of the car
         // (this returns a negative number when traveling backwards)
         float forwardSpeed = Vector3.Dot(transform.forward, rigidBody.linearVelocity);
-
-        /*
-        // Calculate how close the car is to top speed
-        // as a number from zero to one
-        float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed));
-        */
 
         // Calculate slope of the ground underneath the car
         float slopeAngle = GetSlopeAngle();
@@ -71,26 +63,6 @@ public class wheelController : MonoBehaviour
             currentAcceleration -= Time.fixedDeltaTime * acceleration * brakingFriction;
         }
 
-
-        /*
-        // Apply braking friction
-        frontRight.brakeTorque = currentBreakForce * (brakingFriction + speedFactor); // Adjust friction dynamically based on speed;
-        frontLeft.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
-        backLeft.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
-        backRight.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
-        */
-
-        // apply Apply torque to front wheels
-        frontRight.motorTorque = currentAcceleration;
-        frontLeft.motorTorque = currentAcceleration;
-
-        // apply breaking force to all wheels.
-        frontRight.brakeTorque= currentBreakForce;
-        frontLeft.brakeTorque = currentBreakForce;
-        backLeft.brakeTorque = currentBreakForce;
-        backRight.brakeTorque = currentBreakForce;
-
-
         // Modify steering
         float currentTurnAngle = maxTurnAngle * horizontalInput;
         float turnMultiplier = 1f;
@@ -103,15 +75,24 @@ public class wheelController : MonoBehaviour
         // Modify steering for drifting
         if (forwardSpeed > 0 && Input.GetKey(KeyCode.LeftShift)) // Assuming Left Shift initiates drifting
         {
-            frontLeft.steerAngle = currentTurnAngle - (maxTurnAngle * driftControl * *turnMultiplier););
-            frontRight.steerAngle = currentTurnAngle + (maxTurnAngle * driftControl * *turnMultiplier););
+            frontLeft.steerAngle = currentTurnAngle - (maxTurnAngle * driftControl * turnMultiplier);
+            frontRight.steerAngle = currentTurnAngle + (maxTurnAngle * driftControl * turnMultiplier);
         }
         else
         {
-            frontLeft.steerAngle = currentTurnAngle * turnMultiplier);
-            frontRight.steerAngle = currentTurnAngle * turnMultiplier);
+            frontLeft.steerAngle = currentTurnAngle * turnMultiplier;
+            frontRight.steerAngle = currentTurnAngle * turnMultiplier;
         }
 
+        // Apply torque to front wheels
+        frontRight.motorTorque = currentAcceleration;
+        frontLeft.motorTorque = currentAcceleration;
+
+        // Apply braking force to all wheels.
+        frontRight.brakeTorque = currentBreakForce;
+        frontLeft.brakeTorque = currentBreakForce;
+        backLeft.brakeTorque = currentBreakForce;
+        backRight.brakeTorque = currentBreakForce;
 
         // Update wheel meshes
         UpdateWheel(frontLeft, frontLeftTransform);
@@ -122,24 +103,12 @@ public class wheelController : MonoBehaviour
         // Update steering wheel rotation
         UpdateSteeringWheelRotation();
 
-        /*
-        // gives input a negative and positive depending on if you press 'A' or 'D'
-        float inputHori = Input.GetAxis("Horizontal");
-
-        // multiplies by 1
-        float multiplier = 1;
-        if (inputHori > 0) multiplier = -1;
-
-        SteeringWheelTrans.localEulerAngles = new Vector3(23.891f, 0, Mathf.Lerp(0, 90 * multiplier, Mathf.Abs(inputHori)));
-        */
-
         // Control the lights
         if (Input.GetKeyDown(KeyCode.L)) // Example key to toggle lights
         {
             ToggleHeadlights();
             ToggleTaillights();
         }
-
     }
 
     // Method to get the slope angle of the ground underneath the car
@@ -155,13 +124,13 @@ public class wheelController : MonoBehaviour
 
     void UpdateWheel(WheelCollider col, Transform trans)
     {
-        // get wheel collider state.
-        Vector3 postition;
+        // Get wheel collider state.
+        Vector3 position;
         Quaternion rotation;
-        col.GetWorldPose(out postition, out rotation);
+        col.GetWorldPose(out position, out rotation);
 
-        // get wheel transform state.
-        trans.position = postition;
+        // Get wheel transform state.
+        trans.position = position;
         trans.rotation = rotation;
     }
 
@@ -189,5 +158,4 @@ public class wheelController : MonoBehaviour
             taillight.enabled = !taillight.enabled;
         }
     }
-    
 }
