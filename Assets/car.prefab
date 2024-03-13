@@ -1006,7 +1006,7 @@ MonoBehaviour:
   maxTurnAngle: 30
   brakingFriction: 2
   driftControl: 0.2
-  handbrakeForce: 1000
+  handbrakeForce: 2000
 --- !u!114 &5405568453416810097
 MonoBehaviour:
   m_ObjectHideFlags: 0
