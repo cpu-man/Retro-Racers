@@ -76,7 +76,17 @@ public class wheelController : MonoBehaviour
         // Gradually reduce speed when not accelerating or braking
         if (!isHandbrakeActivated && !Input.GetKey(KeyCode.Space) && Mathf.Approximately(currentAcceleration, 0f))
         {
-            currentAcceleration -= Time.fixedDeltaTime * acceleration * brakingFriction;
+            // Check if the car is on a slope
+            if (Mathf.Abs(slopeAngle) < maxSlopeAngle) // Adjust maxSlopeAngle as needed
+            {
+                // If on flat ground, prevent backward movement
+                currentAcceleration = Mathf.Clamp(forwardSpeed, 0f, currentAcceleration);
+            }
+            else
+            {
+                // If on a slope, allow backward movement
+                currentAcceleration -= Time.fixedDeltaTime * acceleration * brakingFriction;
+            }
         }
 
         // Set throttle input for the engine
