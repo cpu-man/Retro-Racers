@@ -1,7 +1,10 @@
 using UnityEngine;
 
+
 public class wheelController : MonoBehaviour
 {
+    public Engine engine; // Reference to the Engine script
+
     [SerializeField] Transform steeringWheelTrans;
 
     [SerializeField] WheelCollider frontRight;
@@ -24,6 +27,7 @@ public class wheelController : MonoBehaviour
     public float brakingFriction = 2.0f; // Adjust this to control the friction during braking
     public float driftControl = 0.2f; // Adjust this to control drifting responsiveness
     public float handbrakeForce = 1000f; // Adjust this to control the handbrake force
+
 
     private Rigidbody rigidBody;
     private float currentBreakForce = 0f;
@@ -74,6 +78,14 @@ public class wheelController : MonoBehaviour
         {
             currentAcceleration -= Time.fixedDeltaTime * acceleration * brakingFriction;
         }
+
+        // Set throttle input for the engine
+        engine.SetThrottle(verticalInput);
+
+        // Apply torque from the engine
+        float engineTorque = engine.GetCurrentTorque();
+        frontRight.motorTorque = engineTorque;
+        frontLeft.motorTorque = engineTorque;
 
         // Modify steering
         float currentTurnAngle = maxTurnAngle * horizontalInput;

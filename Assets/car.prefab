@@ -756,6 +756,7 @@ GameObject:
   - component: {fileID: 1445689958362296925}
   - component: {fileID: 3251296504850711391}
   - component: {fileID: 519968618460093630}
+  - component: {fileID: 4340939745369952896}
   - component: {fileID: 708246666784564138}
   - component: {fileID: 5405568453416810097}
   - component: {fileID: 1159052004203441200}
@@ -916,6 +917,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.63, y: 1.69, z: 4.83777}
   m_Center: {x: -0.000000029802322, y: 1.03, z: -0.045955896}
+--- !u!114 &4340939745369952896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4781135820419617240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb45f069933b27459f8dac957fe6803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torqueCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxRPM: 6000
 --- !u!114 &708246666784564138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,6 +966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de76d4ba1d51524b8ff031b4198f172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  engine: {fileID: 4340939745369952896}
   steeringWheelTrans: {fileID: 6094591538095430463}
   frontRight: {fileID: 1535773102021056974}
   frontLeft: {fileID: 9081855711392115676}
