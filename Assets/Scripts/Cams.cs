@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class Cams : MonoBehaviour
 {
-    var cam1 : Camera;
-    var cam2 : Camera;
+    Camera cam1 ;
+    Camera cam2 ;
 
-    function Start()
+    void Start()
     {
         cam1.enabled = true;
         cam2.enabled = false;
     }
 
-    function Update()
+    void Update()
     {
 
         if (Input.GetKeyDown(KeyCode.C))
