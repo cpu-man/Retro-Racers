@@ -23,11 +23,13 @@ public class wheelController : MonoBehaviour
     public float maxTurnAngle = 15f;
     public float brakingFriction = 2.0f; // Adjust this to control the friction during braking
     public float driftControl = 0.2f; // Adjust this to control drifting responsiveness
+    public float handbrakeForce = 1000f; // Adjust this to control the handbrake force
 
     private Rigidbody rigidBody;
     private float currentBreakForce = 0f;
     private float horizontalInput;
     private float verticalInput;
+    private bool isHandbrakeActivated = false; // Flag to track handbrake activation
     private const float maxSlopeAngle = 45f; // Max slope angle for the car
 
     // Start is called before the first frame update
@@ -45,6 +47,16 @@ public class wheelController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
 
+        // Check if handbrake is activated
+        if (Input.GetKey(KeyCode.Space))
+        {
+            isHandbrakeActivated = true;
+        }
+        else
+        {
+            isHandbrakeActivated = false;
+        }
+
         // Calculate current speed in relation to the forward direction of the car
         // (this returns a negative number when traveling backwards)
         float forwardSpeed = Vector3.Dot(transform.forward, rigidBody.linearVelocity);
@@ -58,7 +70,7 @@ public class wheelController : MonoBehaviour
         currentBreakForce = Input.GetKey(KeyCode.Space) ? breakingForce : 0f;
 
         // Gradually reduce speed when not accelerating or braking
-        if (!Input.GetKey(KeyCode.Space) && Mathf.Approximately(currentAcceleration, 0f))
+        if (!isHandbrakeActivated && !Input.GetKey(KeyCode.Space) && Mathf.Approximately(currentAcceleration, 0f))
         {
             currentAcceleration -= Time.fixedDeltaTime * acceleration * brakingFriction;
         }
