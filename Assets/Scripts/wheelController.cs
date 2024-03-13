@@ -29,11 +29,10 @@ public class wheelController : MonoBehaviour
     //private float currentAcceleration;
     private float currentBreakForce = 0f;
     //private float currentTurnAngle = 0f;
-    public float centreOfGravityOffset = -1f;
     
 
     private Rigidbody rigidBody;
-    private Animation steeringWheelAnimation; // Reference to the steering wheel animation
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,10 +40,8 @@ public class wheelController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
 
         // Adjust center of mass vertically, to help prevent the car from rolling
-        rigidBody.centerOfMass += Vector3.up * centreOfGravityOffset;
 
-        // Get the Animation component from the GameObject that contains your animation
-        steeringWheelAnimation = GetComponentInChildren<Animation>(); // Adjust this based on your hierarchy
+        rigidBody.centerOfMass += new Vector3(0, -1f, 0);
 
     }
 
@@ -57,6 +54,9 @@ public class wheelController : MonoBehaviour
         // Calculate current speed in relation to the forward direction of the car
         // (this returns a negative number when traveling backwards)
         float forwardSpeed = Vector3.Dot(transform.forward, rigidBody.linearVelocity);
+
+        // Calculate slope of the ground underneath the car
+        float slopeAngle = GetSlopeAngle();
 
         // Calculate how close the car is to top speed
         // as a number from zero to one
@@ -74,11 +74,17 @@ public class wheelController : MonoBehaviour
         else
             currentBreakForce = 0f;
 
+        // Gradually reduce speed when not accelerating or braking
+        if (!Input.GetKey(KeyCode.Space) && Mathf.Approximately(currentAcceleration, 0f))
+        {
+            currentAcceleration -= Time.fixedDeltaTime * acceleration * brakingFriction;
+        }
+
         // Apply braking friction
-        frontRight.brakeTorque = currentBreakForce * brakingFriction;
-        frontLeft.brakeTorque = currentBreakForce * brakingFriction;
-        backLeft.brakeTorque = currentBreakForce * brakingFriction;
-        backRight.brakeTorque = currentBreakForce * brakingFriction;
+        frontRight.brakeTorque = currentBreakForce * (brakingFriction + speedFactor); // Adjust friction dynamically based on speed;
+        frontLeft.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
+        backLeft.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
+        backRight.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
 
         // apply Apply torque to front wheels
         frontRight.motorTorque = currentAcceleration;
@@ -92,6 +98,12 @@ public class wheelController : MonoBehaviour
 
         float currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
 
+        // Modify steering for high speeds
+        if (Mathf.Abs(forwardSpeed) > maxSpeed * 0.75f)
+        {
+            currentTurnAngle *= 0.5f; // Reduce steering angle at high speeds
+        }
+
         // Modify steering for drifting
         if (forwardSpeed > 0 && Input.GetKey(KeyCode.LeftShift)) // Assuming Left Shift initiates drifting
         {
@@ -103,6 +115,9 @@ public class wheelController : MonoBehaviour
             frontLeft.steerAngle = currentTurnAngle;
             frontRight.steerAngle = currentTurnAngle;
         }
+
+        
+
         /*
         // take care of the steering.
         float currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
@@ -116,19 +131,7 @@ public class wheelController : MonoBehaviour
         UpdateWheel(backLeft, backLeftTransform);
         UpdateWheel(backRight, backRightTransform);
 
-        // Control the animation based on the turn angle and wheel rotation
-        if (steeringWheelAnimation != null)
-        {
-            /*
-            float normalizedTurnAngle = currentTurnAngle / maxTurnAngle;
-            float maxRotation = Mathf.Max(frontLeftTransform.localEulerAngles.y, frontRightTransform.localEulerAngles.y);
-            float normalizedRotation = maxRotation / maxTurnAngle;
-            float normalizedAnimationTime = Mathf.Max(Mathf.Abs(normalizedTurnAngle), normalizedRotation);
-            steeringWheelAnimation["SteeringWheelAnimation"].normalizedTime = Mathf.Clamp01(normalizedAnimationTime);
-            steeringWheelAnimation.Play("SteeringWheelAnimation");*/
-            
-
-        }
+      
 
         // gives input a negative and positive depending on if you press 'A' or 'D'
         float inputHori = Input.GetAxis("Horizontal");
@@ -148,18 +151,6 @@ public class wheelController : MonoBehaviour
 
     }
 
-    void UpdateWheel(WheelCollider col, Transform trans)
-    {
-        // get wheel collider state.
-        Vector3 postition;
-        Quaternion rotation;
-        col.GetWorldPose(out postition, out rotation);
-
-        // get wheel transform state.
-        trans.position = postition;
-        trans.rotation = rotation;
-    }
-
     // Method to toggle headlights
     void ToggleHeadlights()
     {
@@ -177,4 +168,29 @@ public class wheelController : MonoBehaviour
             taillight.enabled = !taillight.enabled;
         }
     }
+
+    void UpdateWheel(WheelCollider col, Transform trans)
+    {
+        // get wheel collider state.
+        Vector3 postition;
+        Quaternion rotation;
+        col.GetWorldPose(out postition, out rotation);
+
+        // get wheel transform state.
+        trans.position = postition;
+        trans.rotation = rotation;
+    }
+
+    // Method to get the slope angle of the ground underneath the car
+    float GetSlopeAngle()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f))
+        {
+            return Vector3.Angle(hit.normal, Vector3.up);
+        }
+        return 0f;
+    }
+
+    
 }
