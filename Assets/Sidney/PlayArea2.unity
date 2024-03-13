@@ -320,7 +320,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409242107}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &409242112
 Camera:
   m_ObjectHideFlags: 0
@@ -507,7 +507,7 @@ GameObject:
   - component: {fileID: 1198594729}
   m_Layer: 0
   m_Name: car follow
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -620,6 +620,37 @@ MonoBehaviour:
   player: {fileID: 317706020}
   Offset: {x: 0, y: 2.57, z: -0.43}
   speed: 3
+--- !u!1 &1301186639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1301186640}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1301186640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301186639}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 285.09433, y: 46.77795, z: 76.221756}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1352683409 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4388094110662195788, guid: 7dc56c2b879cc8d4eb27138b6d1ac67c, type: 3}
@@ -977,6 +1008,10 @@ PrefabInstance:
       propertyPath: m_CenterOfMass.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2788553210161301427, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 4781135820419617240, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_Name
       value: car (1)
@@ -1069,3 +1104,4 @@ SceneRoots:
   - {fileID: 2123040966}
   - {fileID: 1448121873}
   - {fileID: 1530137674}
+  - {fileID: 1301186640}
