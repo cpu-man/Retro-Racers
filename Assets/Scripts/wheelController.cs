@@ -22,19 +22,14 @@ public class wheelController : MonoBehaviour
     public float breakingForce = 300f;
     public float maxTurnAngle = 15f;
     public float brakingFriction = 2.0f; // Adjust this to control the friction during braking
-    public float driftFriction = 0.8f; // Adjust this to control lateral friction during drifting
+    //public float driftFriction = 0.8f; // Adjust this to control lateral friction during drifting
     public float driftControl = 0.2f; // Adjust this to control drifting responsiveness
-
-
-    //private float currentAcceleration;
-    //private float currentTurnAngle = 0f;
     
     private Rigidbody rigidBody;
     private float currentBreakForce = 0f;
-
-    // Cache input values
-    private float verticalInput;
     private float horizontalInput;
+    private float verticalInput;
+    private const float maxSlopeAngle = 45f; // Max slope angle for the car
 
     // Start is called before the first frame update
     void Start()
@@ -56,9 +51,11 @@ public class wheelController : MonoBehaviour
         // (this returns a negative number when traveling backwards)
         float forwardSpeed = Vector3.Dot(transform.forward, rigidBody.linearVelocity);
 
+        /*
         // Calculate how close the car is to top speed
         // as a number from zero to one
         float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed));
+        */
 
         // Calculate slope of the ground underneath the car
         float slopeAngle = GetSlopeAngle();
@@ -66,7 +63,7 @@ public class wheelController : MonoBehaviour
         float currentAcceleration = acceleration * verticalInput * Mathf.Clamp01(1 - slopeAngle / maxSlopeAngle);
 
         // Apply braking force
-        currentBreakForce = Input.GetKey(KeyCode.Space) ? brakingForce : 0f;
+        currentBreakForce = Input.GetKey(KeyCode.Space) ? breakingForce : 0f;
 
         // Gradually reduce speed when not accelerating or braking
         if (!Input.GetKey(KeyCode.Space) && Mathf.Approximately(currentAcceleration, 0f))
@@ -96,21 +93,23 @@ public class wheelController : MonoBehaviour
 
         // Modify steering
         float currentTurnAngle = maxTurnAngle * horizontalInput;
+        float turnMultiplier = 1f;
+
         if (forwardSpeed > maxSpeed * 0.75f)
         {
-            currentTurnAngle *= 0.5f; // Reduce steering angle at high speeds
+            turnMultiplier = 0.5f; // Reduce steering angle at high speeds
         }
 
         // Modify steering for drifting
         if (forwardSpeed > 0 && Input.GetKey(KeyCode.LeftShift)) // Assuming Left Shift initiates drifting
         {
-            frontLeft.steerAngle = currentTurnAngle - (maxTurnAngle * driftControl);
-            frontRight.steerAngle = currentTurnAngle + (maxTurnAngle * driftControl);
+            frontLeft.steerAngle = currentTurnAngle - (maxTurnAngle * driftControl * *turnMultiplier););
+            frontRight.steerAngle = currentTurnAngle + (maxTurnAngle * driftControl * *turnMultiplier););
         }
         else
         {
-            frontLeft.steerAngle = currentTurnAngle;
-            frontRight.steerAngle = currentTurnAngle;
+            frontLeft.steerAngle = currentTurnAngle * turnMultiplier);
+            frontRight.steerAngle = currentTurnAngle * turnMultiplier);
         }
 
 
