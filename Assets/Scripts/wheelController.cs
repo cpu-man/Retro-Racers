@@ -27,12 +27,14 @@ public class wheelController : MonoBehaviour
 
 
     //private float currentAcceleration;
-    private float currentBreakForce = 0f;
     //private float currentTurnAngle = 0f;
     
-
     private Rigidbody rigidBody;
+    private float currentBreakForce = 0f;
 
+    // Cache input values
+    private float verticalInput;
+    private float horizontalInput;
 
     // Start is called before the first frame update
     void Start()
@@ -40,39 +42,31 @@ public class wheelController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
 
         // Adjust center of mass vertically, to help prevent the car from rolling
-
         rigidBody.centerOfMass += new Vector3(0, -1f, 0);
 
     }
 
     private void FixedUpdate()
     {
-
-        // Get forward/reverse acceleration from the vertical axis (w and s keys).
-        float currentAcceleration = acceleration * Input.GetAxis("Vertical");
+        // Cache input values
+        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
 
         // Calculate current speed in relation to the forward direction of the car
         // (this returns a negative number when traveling backwards)
         float forwardSpeed = Vector3.Dot(transform.forward, rigidBody.linearVelocity);
 
-        // Calculate slope of the ground underneath the car
-        float slopeAngle = GetSlopeAngle();
-
         // Calculate how close the car is to top speed
         // as a number from zero to one
         float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed));
 
-        // Use that to calculate how much torque is available 
-        // (zero torque at top speed)
-        float currentMotorTorque = Mathf.Lerp(0, acceleration, speedFactor);
+        // Calculate slope of the ground underneath the car
+        float slopeAngle = GetSlopeAngle();
+        // Get forward/reverse acceleration from the vertical axis (w and s keys).
+        float currentAcceleration = acceleration * verticalInput * Mathf.Clamp01(1 - slopeAngle / maxSlopeAngle);
 
-
-        
-        // If we're pressing space, give currentBrekingForce a value.
-        if (Input.GetKey(KeyCode.Space))
-            currentBreakForce = breakingForce;
-        else
-            currentBreakForce = 0f;
+        // Apply braking force
+        currentBreakForce = Input.GetKey(KeyCode.Space) ? brakingForce : 0f;
 
         // Gradually reduce speed when not accelerating or braking
         if (!Input.GetKey(KeyCode.Space) && Mathf.Approximately(currentAcceleration, 0f))
@@ -80,11 +74,14 @@ public class wheelController : MonoBehaviour
             currentAcceleration -= Time.fixedDeltaTime * acceleration * brakingFriction;
         }
 
+
+        /*
         // Apply braking friction
         frontRight.brakeTorque = currentBreakForce * (brakingFriction + speedFactor); // Adjust friction dynamically based on speed;
         frontLeft.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
         backLeft.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
         backRight.brakeTorque = currentBreakForce * (brakingFriction + speedFactor);
+        */
 
         // apply Apply torque to front wheels
         frontRight.motorTorque = currentAcceleration;
@@ -96,10 +93,10 @@ public class wheelController : MonoBehaviour
         backLeft.brakeTorque = currentBreakForce;
         backRight.brakeTorque = currentBreakForce;
 
-        float currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
 
-        // Modify steering for high speeds
-        if (Mathf.Abs(forwardSpeed) > maxSpeed * 0.75f)
+        // Modify steering
+        float currentTurnAngle = maxTurnAngle * horizontalInput;
+        if (forwardSpeed > maxSpeed * 0.75f)
         {
             currentTurnAngle *= 0.5f; // Reduce steering angle at high speeds
         }
@@ -116,14 +113,6 @@ public class wheelController : MonoBehaviour
             frontRight.steerAngle = currentTurnAngle;
         }
 
-        
-
-        /*
-        // take care of the steering.
-        float currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
-        frontLeft.steerAngle = currentTurnAngle;
-        frontRight.steerAngle = currentTurnAngle;
-        */
 
         // Update wheel meshes
         UpdateWheel(frontLeft, frontLeftTransform);
@@ -131,8 +120,10 @@ public class wheelController : MonoBehaviour
         UpdateWheel(backLeft, backLeftTransform);
         UpdateWheel(backRight, backRightTransform);
 
-      
+        // Update steering wheel rotation
+        UpdateSteeringWheelRotation();
 
+        /*
         // gives input a negative and positive depending on if you press 'A' or 'D'
         float inputHori = Input.GetAxis("Horizontal");
 
@@ -141,6 +132,7 @@ public class wheelController : MonoBehaviour
         if (inputHori > 0) multiplier = -1;
 
         SteeringWheelTrans.localEulerAngles = new Vector3(23.891f, 0, Mathf.Lerp(0, 90 * multiplier, Mathf.Abs(inputHori)));
+        */
 
         // Control the lights
         if (Input.GetKeyDown(KeyCode.L)) // Example key to toggle lights
@@ -149,6 +141,36 @@ public class wheelController : MonoBehaviour
             ToggleTaillights();
         }
 
+    }
+
+    // Method to get the slope angle of the ground underneath the car
+    float GetSlopeAngle()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f))
+        {
+            return Vector3.Angle(hit.normal, Vector3.up);
+        }
+        return 0f;
+    }
+
+    void UpdateWheel(WheelCollider col, Transform trans)
+    {
+        // get wheel collider state.
+        Vector3 postition;
+        Quaternion rotation;
+        col.GetWorldPose(out postition, out rotation);
+
+        // get wheel transform state.
+        trans.position = postition;
+        trans.rotation = rotation;
+    }
+
+    void UpdateSteeringWheelRotation()
+    {
+        float inputHori = horizontalInput;
+        float multiplier = inputHori > 0 ? -1 : 1;
+        steeringWheelTrans.localEulerAngles = new Vector3(23.891f, 0, Mathf.Lerp(0, 90 * multiplier, Mathf.Abs(inputHori)));
     }
 
     // Method to toggle headlights
@@ -168,29 +190,5 @@ public class wheelController : MonoBehaviour
             taillight.enabled = !taillight.enabled;
         }
     }
-
-    void UpdateWheel(WheelCollider col, Transform trans)
-    {
-        // get wheel collider state.
-        Vector3 postition;
-        Quaternion rotation;
-        col.GetWorldPose(out postition, out rotation);
-
-        // get wheel transform state.
-        trans.position = postition;
-        trans.rotation = rotation;
-    }
-
-    // Method to get the slope angle of the ground underneath the car
-    float GetSlopeAngle()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f))
-        {
-            return Vector3.Angle(hit.normal, Vector3.up);
-        }
-        return 0f;
-    }
-
     
 }
