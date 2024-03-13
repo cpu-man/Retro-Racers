@@ -583,11 +583,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 708246666784564138, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: maxSpeed
-      value: 700
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 708246666784564138, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: acceleration
-      value: 1000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 708246666784564138, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: driftControl

@@ -15,7 +15,7 @@ public class CarHUD : MonoBehaviour
 
         // Update speedometer
         float speed = carRigidbody.linearVelocity.magnitude * 3.6f; // Convert m/s to km/h
-        speedometerText.text = "Speed: " + Mathf.Round(speed) + " km/h";
+        speedometerText.text = Mathf.Round(speed) + " km/h";
 
         // Update RPM gauge
         float rpm = engine.currentRPM;

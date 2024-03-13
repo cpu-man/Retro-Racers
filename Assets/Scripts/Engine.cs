@@ -6,12 +6,8 @@ public class Engine : MonoBehaviour
 
     public float maxRPM = 6000f; // Maximum RPM of the engine
 
-    protected float currentRPM; // Current RPM of the engine
+    public float currentRPM; // Current RPM of the engine
 
-    public float GetCurrentRPM()
-    {
-        return currentRPM;
-    }
     private float currentTorque; // Current torque output of the engine
 
     public float GetCurrentTorque()
