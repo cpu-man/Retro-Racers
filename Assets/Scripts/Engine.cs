@@ -6,6 +6,7 @@ public class Engine : MonoBehaviour
 
     public float maxRPM = 6000f; // Maximum RPM of the engine
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     private float currentRPM; // Current RPM of the engine
     private float currentTorque; // Current torque output of the engine
@@ -20,6 +21,16 @@ public class Engine : MonoBehaviour
         // Adjust torque based on throttle input
         currentTorque *= throttleInput;
 
+=======
+
+    private float currentRPM; // Current RPM of the engine
+    private float currentTorque; // Current torque output of the engine
+
+    public float GetCurrentTorque()
+    {
+        // Interpolate torque based on current RPM using the torque curve
+        currentTorque = torqueCurve.Evaluate(currentRPM / maxRPM);
+>>>>>>> parent of c24ff6f (engine update wip)
 =======
 
     private float currentRPM; // Current RPM of the engine
