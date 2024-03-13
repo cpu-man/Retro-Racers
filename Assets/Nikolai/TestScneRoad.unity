@@ -605,6 +605,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 955929852}
     - target: {fileID: 708246666784564138, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: steeringWheelTrans
+      value: 
+      objectReference: {fileID: 955929852}
+    - target: {fileID: 708246666784564138, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: centreOfGravityOffset
       value: -1
       objectReference: {fileID: 0}
