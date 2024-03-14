@@ -57,6 +57,9 @@ public class wheelController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
 
         // Check if handbrake is activated
+        isHandbrakeActivated = Input.GetKey(KeyCode.Space);
+        /*
+        // Check if handbrake is activated
         if (Input.GetKey(KeyCode.Space))
         {
             isHandbrakeActivated = true;
@@ -65,6 +68,7 @@ public class wheelController : MonoBehaviour
         {
             isHandbrakeActivated = false;
         }
+        */
 
         // Calculate current speed in relation to the forward direction of the car
         // (this returns a negative number when traveling backwards)
@@ -126,6 +130,9 @@ public class wheelController : MonoBehaviour
         // Apply torque to front wheels
         frontRight.motorTorque = currentAcceleration;
         frontLeft.motorTorque = currentAcceleration;
+
+        // Apply braking force only if handbrake is activated
+        currentBreakForce = isHandbrakeActivated ? breakingForce : 0f;
 
         // Apply braking force to all wheels.
         frontRight.brakeTorque = currentBreakForce;
