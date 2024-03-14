@@ -3,7 +3,7 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class MotionBlurController : MonoBehaviour
 {
-    public Rigidbody carRigidbody; // Reference to the car's Rigidbody component
+    public Rigidbody targetRigidbody; // Reference to the Rigidbody to use for calculating motion blur
     public float minSpeed = 0f; // Minimum speed for no motion blur
     public float maxSpeed = 50f; // Maximum speed for maximum motion blur
     public float maxMotionBlur = 1f; // Maximum motion blur intensity at max speed
@@ -22,8 +22,14 @@ public class MotionBlurController : MonoBehaviour
 
     private void Update()
     {
-        // Calculate the speed ratio (0 to 1) based on the car's speed within the minSpeed to maxSpeed range
-        float speedRatio = Mathf.Clamp01((carRigidbody.linearVelocity.magnitude - minSpeed) / (maxSpeed - minSpeed));
+        if (targetRigidbody == null)
+        {
+            Debug.LogWarning("Target Rigidbody is not assigned to the MotionBlurController.");
+            return;
+        }
+
+        // Calculate the speed ratio (0 to 1) based on the target Rigidbody's speed within the minSpeed to maxSpeed range
+        float speedRatio = Mathf.Clamp01((targetRigidbody.linearVelocity.magnitude - minSpeed) / (maxSpeed - minSpeed));
 
         // Apply motion blur based on speed
         float motionBlurIntensity = Mathf.Lerp(0f, maxMotionBlur, speedRatio);
