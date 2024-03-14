@@ -1107,6 +1107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 7822845152994127506}
+  carRigidbody: {fileID: 1445689958362296925}
+  minFOV: 60
+  maxFOV: 90
+  minSpeed: 0
+  maxSpeed: 50
 --- !u!1 &4781135820419617240
 GameObject:
   m_ObjectHideFlags: 0
