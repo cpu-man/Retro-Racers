@@ -127,13 +127,13 @@ WheelCollider:
   m_GameObject: {fileID: 639769150079211173}
   serializedVersion: 2
   m_Center: {x: 0, y: 0.15, z: 0}
-  m_Radius: 0.33
+  m_Radius: 0.3275004
   m_SuspensionSpring:
     spring: 3875
     damper: 7425
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
+  m_ForceAppPointDistance: 0.02
   m_Mass: 160
   m_WheelDampingRate: 0.3
   m_ForwardFriction:
@@ -330,13 +330,13 @@ WheelCollider:
   m_GameObject: {fileID: 1487595761306916590}
   serializedVersion: 2
   m_Center: {x: 0, y: 0.15, z: 0}
-  m_Radius: 0.33
+  m_Radius: 0.3275004
   m_SuspensionSpring:
     spring: 3875
     damper: 7425
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
+  m_ForceAppPointDistance: 0.02
   m_Mass: 160
   m_WheelDampingRate: 0.3
   m_ForwardFriction:
@@ -1145,6 +1145,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8753174447127724045}
   - {fileID: 4667981430555556560}
   - {fileID: 8640469075985599353}
   - {fileID: 1563081831334744}
@@ -1367,6 +1368,7 @@ MonoBehaviour:
   brakingFriction: 2
   driftControl: 0.2
   handbrakeForce: 2000
+  centerOfGravity: {fileID: 8753174447127724045}
 --- !u!114 &5405568453416810097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6398,13 +6400,13 @@ WheelCollider:
   m_GameObject: {fileID: 6097852771146859384}
   serializedVersion: 2
   m_Center: {x: 0, y: 0.15, z: 0}
-  m_Radius: 0.33
+  m_Radius: 0.3275004
   m_SuspensionSpring:
     spring: 3875
     damper: 7425
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
+  m_ForceAppPointDistance: 0.02
   m_Mass: 160
   m_WheelDampingRate: 0.3
   m_ForwardFriction:
@@ -6874,13 +6876,13 @@ WheelCollider:
   m_GameObject: {fileID: 7722357187312563460}
   serializedVersion: 2
   m_Center: {x: 0, y: 0.15, z: 0}
-  m_Radius: 0.33
+  m_Radius: 0.3275004
   m_SuspensionSpring:
     spring: 3875
     damper: 7425
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
+  m_ForceAppPointDistance: 0.02
   m_Mass: 160
   m_WheelDampingRate: 0.3
   m_ForwardFriction:
@@ -7309,3 +7311,34 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &9019398414308369865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8753174447127724045}
+  m_Layer: 0
+  m_Name: COM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8753174447127724045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9019398414308369865}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000000081460335, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.04, z: 0.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7822845152994127506}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
