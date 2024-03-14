@@ -30,6 +30,8 @@ public class wheelController : MonoBehaviour
 
 
     private Rigidbody rigidBody;
+    public Transform centerOfGravity;
+
     private float currentBreakForce = 0f;
     private float horizontalInput;
     private float verticalInput;
@@ -40,9 +42,12 @@ public class wheelController : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        if (centerOfGravity) { rigidBody.centerOfMass = centerOfGravity.localPosition; }
 
+        /*
         // Adjust center of mass vertically, to help prevent the car from rolling
         rigidBody.centerOfMass += new Vector3(0, -1f, 0);
+        */
     }
 
     private void FixedUpdate()
