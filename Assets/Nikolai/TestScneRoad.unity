@@ -662,6 +662,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6856395226438309039, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: isGlobal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7118302730881774571, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -765,6 +769,10 @@ PrefabInstance:
     - target: {fileID: 7822845152994127506, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406900667381134127, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: maxMotionBlur
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 9081855711392115676, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_Mass
@@ -896,9 +904,9 @@ MonoBehaviour:
   antialiasingMode: 3
   temporalAntialiasing:
     jitterSpread: 0.75
-    sharpness: 0.25
+    sharpness: 0.2
     stationaryBlending: 0.95
-    motionBlending: 0.84
+    motionBlending: 0.88
   subpixelMorphologicalAntialiasing:
     quality: 2
   fastApproximateAntialiasing:
