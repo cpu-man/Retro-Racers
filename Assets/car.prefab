@@ -478,8 +478,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carRigidbody: {fileID: 1445689958362296925}
   engine: {fileID: 4340939745369952896}
-  speedometerText: {fileID: 0}
-  rpmText: {fileID: 0}
+  speedometerText: {fileID: 3102897203859264389}
+  rpmText: {fileID: 163452251974844381}
 --- !u!1 &2713379695935741519
 GameObject:
   m_ObjectHideFlags: 0
