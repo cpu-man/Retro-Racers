@@ -1566,7 +1566,7 @@ MonoBehaviour:
   acceleration: 1800
   maxSpeed: 230
   breakingForce: 600
-  maxTurnAngle: 15
+  maxTurnAngle: 30
   brakingFriction: 2
   driftControl: 0.2
   handbrakeForce: 2000
