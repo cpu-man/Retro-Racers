@@ -49,6 +49,33 @@ public class wheelController : MonoBehaviour
         rigidBody.centerOfMass += new Vector3(0, -1f, 0);
         */
     }
+    private void Update()
+    {
+        // Control the lights
+        if (Input.GetKeyDown(KeyCode.L)) // Example key to toggle lights
+        {
+            ToggleHeadlights();
+            ToggleTaillights();
+        }
+
+        // Method to toggle headlights
+        void ToggleHeadlights()
+        {
+            foreach (Light headlight in headlights)
+            {
+                headlight.enabled = !headlight.enabled;
+            }
+        }
+
+        // Method to toggle taillights
+        void ToggleTaillights()
+        {
+            foreach (Light taillight in taillights)
+            {
+                taillight.enabled = !taillight.enabled;
+            }
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -149,12 +176,7 @@ public class wheelController : MonoBehaviour
         // Update steering wheel rotation
         UpdateSteeringWheelRotation();
 
-        // Control the lights
-        if (Input.GetKeyDown(KeyCode.L)) // Example key to toggle lights
-        {
-            ToggleHeadlights();
-            ToggleTaillights();
-        }
+        
     }
 
     // Method to get the slope angle of the ground underneath the car
@@ -187,21 +209,5 @@ public class wheelController : MonoBehaviour
         steeringWheelTrans.localEulerAngles = new Vector3(23.891f, 0, Mathf.Lerp(0, 90 * multiplier, Mathf.Abs(inputHori)));
     }
 
-    // Method to toggle headlights
-    void ToggleHeadlights()
-    {
-        foreach (Light headlight in headlights)
-        {
-            headlight.enabled = !headlight.enabled;
-        }
-    }
-
-    // Method to toggle taillights
-    void ToggleTaillights()
-    {
-        foreach (Light taillight in taillights)
-        {
-            taillight.enabled = !taillight.enabled;
-        }
-    }
+    
 }
