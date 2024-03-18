@@ -1563,7 +1563,7 @@ MonoBehaviour:
   taillights:
   - {fileID: 1332804414547183169}
   - {fileID: 7385583234144586146}
-  acceleration: 1000
+  acceleration: 1800
   maxSpeed: 980
   breakingForce: 600
   maxTurnAngle: 15
@@ -7023,7 +7023,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6842008, y: 0.072240606}
   m_AnchorMax: {x: 1, y: 0.2597594}
-  m_AnchoredPosition: {x: 25, y: 0.19999695}
+  m_AnchoredPosition: {x: 25, y: 0.2000122}
   m_SizeDelta: {x: 51, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &547022639223283525
@@ -7230,7 +7230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6842008, y: 0}
   m_AnchorMax: {x: 1, y: 0.1772782}
-  m_AnchoredPosition: {x: 25, y: -0.8999939}
+  m_AnchoredPosition: {x: 25, y: -0.9000244}
   m_SizeDelta: {x: 51, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8549029090780517005
