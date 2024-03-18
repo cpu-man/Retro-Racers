@@ -1564,7 +1564,7 @@ MonoBehaviour:
   - {fileID: 1332804414547183169}
   - {fileID: 7385583234144586146}
   acceleration: 1800
-  maxSpeed: 980
+  maxSpeed: 230
   breakingForce: 600
   maxTurnAngle: 15
   brakingFriction: 2
