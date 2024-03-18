@@ -373,9 +373,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1865524959444584796, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.2000122
+      objectReference: {fileID: 0}
     - target: {fileID: 4781135820419617240, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_Name
       value: car
+      objectReference: {fileID: 0}
+    - target: {fileID: 5274623826413517201, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.9000244
+      objectReference: {fileID: 0}
+    - target: {fileID: 7171364141609643169, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: m_TargetDisplay
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7822845152994127506, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -387,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7822845152994127506, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7822845152994127506, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_LocalRotation.w
