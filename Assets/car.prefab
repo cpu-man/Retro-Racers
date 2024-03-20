@@ -1270,7 +1270,7 @@ MonoBehaviour:
     jitterSpread: 0.75
     sharpness: 0.2
     stationaryBlending: 0.95
-    motionBlending: 0.88
+    motionBlending: 0.81
   subpixelMorphologicalAntialiasing:
     quality: 2
   fastApproximateAntialiasing:
@@ -1586,10 +1586,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6fc0b766e413a42bc7b45f0a3e4135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDrunkIntensity: 10
+  maxDrunkIntensity: 6
   drunkIncreaseRate: 0.1
   maxInputDistortion: 1
-  maxSpeedDistortion: 0.001
+  maxSpeedDistortion: 0.01
   maxLatency: 0.4
   maxDelay: 0.2
 --- !u!114 &5405568453416810097
