@@ -6,12 +6,11 @@ public class DrunkMechanic : MonoBehaviour
     public float maxDrunkIntensity = 1.0f;
     public float drunkIncreaseRate = 0.1f;
     public float maxInputDistortion = 1.0f;
-    public float maxSpeedDistortion = 0.5f; // Adjust this value as needed
     public float maxLatency = 0.2f; // Maximum latency added to input
     public float maxDelay = 0.1f; // Maximum delay added to input
 
     private float drunkIntensity = 0.0f;
-    private wheelController carController;
+    private WheelController carController;
     private Rigidbody playerRigidbody;
 
     private float inputLatency = 0.0f;
@@ -19,7 +18,7 @@ public class DrunkMechanic : MonoBehaviour
 
     void Start()
     {
-        carController = GetComponent<wheelController>();
+        carController = GetComponent<WheelController>();
         playerRigidbody = GetComponent<Rigidbody>();
     }
 
@@ -62,12 +61,11 @@ public class DrunkMechanic : MonoBehaviour
         float delayedHorizontalInput = distortedHorizontalInput + Random.Range(-inputDelay, inputDelay);
         float delayedVerticalInput = distortedVerticalInput + Random.Range(-inputDelay, inputDelay);
 
-        // Apply distorted input to car controller with added latency
-        carController.horizontalInput = delayedHorizontalInput;
-        carController.verticalInput = delayedVerticalInput;
+        // Gradually apply drunk effects to car controls
+        float gradualIntensity = Mathf.Clamp01(drunkIntensity / maxDrunkIntensity);
 
-        // Apply speed distortion based on drunk intensity
-        float speedMultiplier = Mathf.Lerp(1.0f, 1.0f - drunkIntensity * maxSpeedDistortion, Mathf.Clamp01(playerRigidbody.linearVelocity.magnitude / carController.maxSpeed));
-        playerRigidbody.linearVelocity *= speedMultiplier;
+        // Apply distorted input to car controller with added latency
+        carController.horizontalInput = Mathf.Lerp(distortedHorizontalInput, delayedHorizontalInput, gradualIntensity);
+        carController.verticalInput = Mathf.Lerp(distortedVerticalInput, delayedVerticalInput, gradualIntensity);
     }
 }
