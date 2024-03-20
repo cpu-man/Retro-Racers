@@ -1917,11 +1917,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6fc0b766e413a42bc7b45f0a3e4135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDrunkIntensity: 4
-  drunkIncreaseRate: 0.2
-  maxInputDistortion: 2
-  maxLatency: 30
-  maxDelay: 20
+  maxDrunkIntensity: 30
+  drunkIncreaseRate: 3
+  maxInputDistortion: 20
+  maxLatency: 50
+  maxDelay: 40
   drunkIntensity: 0
 --- !u!114 &5405568453416810097
 MonoBehaviour:
