@@ -10,7 +10,7 @@ public class DrunkMechanic : MonoBehaviour
     public float maxDelay = 0.1f; // Maximum delay added to input
 
     private float drunkIntensity = 0.0f;
-    private WheelController carController;
+    private wheelController carController;
     private Rigidbody playerRigidbody;
 
     private float inputLatency = 0.0f;
@@ -18,7 +18,7 @@ public class DrunkMechanic : MonoBehaviour
 
     void Start()
     {
-        carController = GetComponent<WheelController>();
+        carController = GetComponent<wheelController>();
         playerRigidbody = GetComponent<Rigidbody>();
     }
 
