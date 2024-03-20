@@ -33,8 +33,8 @@ public class wheelController : MonoBehaviour
     public Transform centerOfGravity;
 
     private float currentBreakForce = 0f;
-    private float horizontalInput;
-    private float verticalInput;
+    public float horizontalInput;
+    public float verticalInput;
     private bool isHandbrakeActivated = false; // Flag to track handbrake activation
     private const float maxSlopeAngle = 45f; // Max slope angle for the car
 
