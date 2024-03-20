@@ -1323,6 +1323,7 @@ GameObject:
   - component: {fileID: 519968618460093630}
   - component: {fileID: 4340939745369952896}
   - component: {fileID: 708246666784564138}
+  - component: {fileID: 4825640850189436920}
   - component: {fileID: 5405568453416810097}
   - component: {fileID: 1159052004203441200}
   m_Layer: 0
@@ -1571,6 +1572,26 @@ MonoBehaviour:
   driftControl: 0.2
   handbrakeForce: 2000
   centerOfGravity: {fileID: 8753174447127724045}
+  horizontalInput: 0
+  verticalInput: 0
+--- !u!114 &4825640850189436920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4781135820419617240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6fc0b766e413a42bc7b45f0a3e4135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDrunkIntensity: 10
+  drunkIncreaseRate: 0.1
+  maxInputDistortion: 1
+  maxSpeedDistortion: 0.001
+  maxLatency: 0.4
+  maxDelay: 0.2
 --- !u!114 &5405568453416810097
 MonoBehaviour:
   m_ObjectHideFlags: 0
