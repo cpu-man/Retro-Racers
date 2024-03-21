@@ -1879,6 +1879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de76d4ba1d51524b8ff031b4198f172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drunkMechanic: {fileID: 4825640850189436920}
   engine: {fileID: 4340939745369952896}
   steeringWheelTrans: {fileID: 6094591538095430463}
   frontRight: {fileID: 1535773102021056974}
@@ -1917,11 +1918,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6fc0b766e413a42bc7b45f0a3e4135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDrunkIntensity: 30
-  drunkIncreaseRate: 3
-  maxInputDistortion: 20
-  maxLatency: 50
-  maxDelay: 40
+  maxDrunkIntensity: 6
+  drunkIncreaseRate: 0.2
+  maxInputDistortion: 1
+  maxLatency: 0.3
+  maxDelay: 0.2
   drunkIntensity: 0
 --- !u!114 &5405568453416810097
 MonoBehaviour:

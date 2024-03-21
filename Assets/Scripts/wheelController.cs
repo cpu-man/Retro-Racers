@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class wheelController : MonoBehaviour
 {
+    public DrunkMechanic drunkMechanic;
     
     public Engine engine; // Reference to the Engine script
 
@@ -88,7 +89,7 @@ public class wheelController : MonoBehaviour
     IEnumerator applyControls(float verticalInput, float horizontalInput){
     
         //delay
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(Mathf.Lerp(0,drunkMechanic.maxDelay,drunkMechanic.drunkIntensity/drunkMechanic.maxDrunkIntensity));
     // Check if handbrake is activated
         isHandbrakeActivated = Input.GetKey(KeyCode.Space);
         /*
