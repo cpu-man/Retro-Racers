@@ -1,8 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 
 public class wheelController : MonoBehaviour
 {
+    
     public Engine engine; // Reference to the Engine script
 
     [SerializeField] Transform steeringWheelTrans;
@@ -55,6 +57,7 @@ public class wheelController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L)) // Example key to toggle lights
         {
             ToggleHeadlights();
+            
             ToggleTaillights();
         }
 
@@ -75,15 +78,18 @@ public class wheelController : MonoBehaviour
                 taillight.enabled = !taillight.enabled;
             }
         }
-    }
-
-    private void FixedUpdate()
-    {
+   
         // Cache input values
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
+        StartCoroutine(applyControls(verticalInput, horizontalInput));
 
-        // Check if handbrake is activated
+    }
+    IEnumerator applyControls(float verticalInput, float horizontalInput){
+    
+        //delay
+        yield return new WaitForSeconds(3);
+    // Check if handbrake is activated
         isHandbrakeActivated = Input.GetKey(KeyCode.Space);
         /*
         // Check if handbrake is activated
