@@ -15,6 +15,7 @@ public class CamTitleScript : MonoBehaviour
         if (Input.anyKeyDown)
         {
             animator.SetBool("isplaying", true);
+            
         }
     }
 }
