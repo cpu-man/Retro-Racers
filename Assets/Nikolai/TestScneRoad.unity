@@ -23,9 +23,9 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 8
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.5566037, g: 0.6819115, b: 1, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -155,7 +155,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.6398932, g: 0.9227821, b: 0.97735846, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -292,11 +292,11 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709160390}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0.94
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -375,15 +375,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 486300222145000968, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 0
+      value: 1.1362062e-28
       objectReference: {fileID: 0}
     - target: {fileID: 486300222145000968, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.5309205e-28
+      value: 2.7329223e-20
       objectReference: {fileID: 0}
     - target: {fileID: 486300222145000968, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: NaN
+      value: 3.214346e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 486300222145000968, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 3.719e-42
       objectReference: {fileID: 0}
     - target: {fileID: 720754180437656784, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_AnchorMax.y
@@ -395,11 +399,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1332804414547183169, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 9.604e-42
+      value: 9.57e-43
       objectReference: {fileID: 0}
     - target: {fileID: 1332804414547183169, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 2.524355e-29
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1332804414547183169, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.z
@@ -427,19 +431,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5885982029804154026, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 1.8879014e+31
+      value: 2.264878e+20
       objectReference: {fileID: 0}
     - target: {fileID: 5885982029804154026, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.3958713e+10
+      value: 6.9776278e+22
       objectReference: {fileID: 0}
     - target: {fileID: 5885982029804154026, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 1.264647e+10
+      value: 1.0585578e-38
       objectReference: {fileID: 0}
     - target: {fileID: 5885982029804154026, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 2.6562882e+20
+      value: 1.6905131e+31
       objectReference: {fileID: 0}
     - target: {fileID: 7171364141609643169, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_TargetDisplay
@@ -447,19 +451,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7385583234144586146, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: -2.3581397e-18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7385583234144586146, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 2.7114493e-20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7385583234144586146, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 3.398017e-39
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7385583234144586146, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 9.718e-42
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7741034356632657930, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -467,11 +471,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7741034356632657930, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 4.877e-42
+      value: 9.57e-43
       objectReference: {fileID: 0}
     - target: {fileID: 7741034356632657930, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 2.524355e-29
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7741034356632657930, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_BoundingSphereOverride.z
