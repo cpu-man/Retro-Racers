@@ -1919,7 +1919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDrunkIntensity: 6
-  drunkIncreaseRate: 0.2
+  drunkIncreaseRate: 0.4
   maxInputDistortion: 1
   maxLatency: 0.3
   maxDelay: 0.2
