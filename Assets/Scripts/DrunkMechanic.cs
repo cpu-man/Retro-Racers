@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DrunkMechanic : MonoBehaviour
@@ -8,11 +9,8 @@ public class DrunkMechanic : MonoBehaviour
     public float maxInputDistortion = 1.0f;
     public float maxLatency = 0.2f; // Maximum latency added to input
     public float maxDelay = 0.1f; // Maximum delay added to input
-
-
-    private float drunkIntensity = 0.0f;
-
     
+
     public float drunkIntensity = 0.0f;
 
 
@@ -26,6 +24,9 @@ public class DrunkMechanic : MonoBehaviour
     {
         carController = GetComponent<wheelController>();
         playerRigidbody = GetComponent<Rigidbody>();
+        
+        // Cache input values and apply controls
+        CacheAndApplyControls();
     }
 
     void Update()
@@ -35,6 +36,8 @@ public class DrunkMechanic : MonoBehaviour
         {
             Drink();
             Debug.Log("Player is drinking. Drunk intensity: " + drunkIntensity);
+            
+            
         }
     }
 
@@ -42,6 +45,26 @@ public class DrunkMechanic : MonoBehaviour
     {
         // Apply drunk effects to car controls
         ApplyDrunkControls();
+    }
+    
+    void CacheAndApplyControls()
+    {
+        // Cache input values
+        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal");
+
+        // Apply controls with a delay
+        StartCoroutine(ApplyControls(verticalInput, horizontalInput));
+    }
+
+    IEnumerator ApplyControls(float verticalInput, float horizontalInput)
+    {
+        // Delay before applying controls
+        yield return new WaitForSeconds(3);
+
+        // Apply controls
+        carController.verticalInput = verticalInput;
+        carController.horizontalInput = horizontalInput;
     }
 
     void Drink()
