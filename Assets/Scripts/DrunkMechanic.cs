@@ -9,7 +9,7 @@ public class DrunkMechanic : MonoBehaviour
     public float maxInputDistortion = 1.0f;
     public float maxLatency = 0.2f; // Maximum latency added to input
     public float maxDelay = 0.1f; // Maximum delay added to input
-    
+    public Animator bottleAnimator;
 
     public float drunkIntensity = 0.0f;
 
@@ -74,6 +74,13 @@ public class DrunkMechanic : MonoBehaviour
         // Adjust input latency and delay based on drunk intensity
         inputLatency = Mathf.Lerp(0.0f, maxLatency, drunkIntensity / maxDrunkIntensity);
         inputDelay = Mathf.Lerp(0.0f, maxDelay, drunkIntensity / maxDrunkIntensity);
+        
+        // Trigger the drinking animation
+        
+        if (bottleAnimator != null)
+        {
+            bottleAnimator.SetTrigger("Drink");
+        }
     }
 
     void ApplyDrunkControls()
