@@ -976,6 +976,7 @@ GameObject:
   - component: {fileID: 797152093435062110}
   - component: {fileID: 6885254590601032327}
   - component: {fileID: 4767349500895167460}
+  - component: {fileID: 8875474381283244984}
   m_Layer: 0
   m_Name: CarInterior
   m_TagString: Untagged
@@ -1125,6 +1126,19 @@ MonoBehaviour:
   _PostProcessShaderAccurate: {fileID: 4800000, guid: 2ebed186567d3c244a87538744a62920, type: 3}
   _PixelationShader: {fileID: 4800000, guid: f2da0e2a14a532548b5db043244b3df1, type: 3}
   _InterlacingShader: {fileID: 4800000, guid: 03ebd34214b41ef459d7ee6753b062be, type: 3}
+--- !u!114 &8875474381283244984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2788553210161301427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae29fb261f8fc04eabd7f585d1dce86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: e94dabcf8a7763a49a89d33374d75837, type: 2}
 --- !u!1 &2966958470998174287
 GameObject:
   m_ObjectHideFlags: 0

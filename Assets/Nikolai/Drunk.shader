@@ -5,6 +5,7 @@ Shader "Drunk"
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "black" {}
+		//_DrunkIntensity ("Drunk Intensity", Range(0, 1)) = 0
 	}
 	Subshader
 	{
@@ -14,7 +15,8 @@ Shader "Drunk"
 			#pragma vertex vertex_shader
 			#pragma fragment pixel_shader
 			#pragma target 2.0
-			
+
+			//#include "UnityCG.cginc"
 
 			sampler2D _MainTex;
 
@@ -27,13 +29,14 @@ Shader "Drunk"
 			{
 				
 				vector <float,2> uv = vertex.xy/_ScreenParams.xy;
-
 				// Invert y-coordinate
 				uv.y = 1.0 - uv.y;
 
-				
+				//float effectStrength = _DrunkIntensity * 0.05;
 				uv.x+=cos(uv.y*2.0+_Time.g)*0.05;
 				uv.y+=sin(uv.x*2.0+_Time.g)*0.05;
+				//uv.x+=cos(uv.y*2.0+ _Time.g) * effectStrength;
+				//uv.y+=sin(uv.x*2.0+ _Time.g) * effectStrength;
 				
 				float offset = sin(_Time.g *0.5) * 0.01;
 				

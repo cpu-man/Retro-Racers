@@ -4,14 +4,17 @@ using UnityEngine;
 public class DrunkMechanic : MonoBehaviour
 {
     // Parameters for drunk effects
+    public Renderer objectRenderer; // Reference to the object's renderer
     public float maxDrunkIntensity = 1.0f;
     public float drunkIncreaseRate = 0.1f;
+    public float drunkThreshold = 0.5f; // Drunk intensity threshold to start showing effects
     public float maxInputDistortion = 1.0f;
     public float maxLatency = 0.2f; // Maximum latency added to input
     public float maxDelay = 0.1f; // Maximum delay added to input
     public Animator bottleAnimator;
 
     public float drunkIntensity = 0.0f;
+    private bool effectsActivated = false;
 
 
     private wheelController carController;
@@ -27,6 +30,16 @@ public class DrunkMechanic : MonoBehaviour
         
         // Cache input values and apply controls
         CacheAndApplyControls();
+        
+        // Ensure the objectRenderer reference is assigned
+        if (objectRenderer == null)
+        {
+            Debug.LogError("Object renderer reference is not assigned.");
+            return;
+        }
+
+        // Set initial drunk intensity to zero
+        objectRenderer.material.SetFloat("_DrunkIntensity", 0.0f);
     }
 
     void Update()
@@ -70,6 +83,15 @@ public class DrunkMechanic : MonoBehaviour
     void Drink()
     {
         drunkIntensity = Mathf.Clamp(drunkIntensity + drunkIncreaseRate, 0.0f, maxDrunkIntensity);
+        
+        // Set drunk intensity to the shader
+        objectRenderer.material.SetFloat("_DrunkIntensity", drunkIntensity);
+        
+        // Activate effects if the threshold is reached
+        if (drunkIntensity >= drunkThreshold)
+        {
+            effectsActivated = true;
+        }
 
         // Adjust input latency and delay based on drunk intensity
         inputLatency = Mathf.Lerp(0.0f, maxLatency, drunkIntensity / maxDrunkIntensity);
