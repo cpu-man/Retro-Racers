@@ -4,7 +4,7 @@ using UnityEngine;
 public class DrunkMechanic : MonoBehaviour
 {
     // Parameters for drunk effects
-    public Renderer objectRenderer; // Reference to the object's renderer
+    public Material objectRenderer; // Reference to the object's renderer
     public float maxDrunkIntensity = 1.0f;
     public float drunkIncreaseRate = 0.1f;
     public float drunkThreshold = 0.5f; // Drunk intensity threshold to start showing effects
@@ -39,7 +39,7 @@ public class DrunkMechanic : MonoBehaviour
         }
 
         // Set initial drunk intensity to zero
-        objectRenderer.material.SetFloat("_DrunkIntensity", 0.0f);
+        objectRenderer.SetFloat("_DrunkIntensity", 0.0f);
     }
 
     void Update()
@@ -85,7 +85,7 @@ public class DrunkMechanic : MonoBehaviour
         drunkIntensity = Mathf.Clamp(drunkIntensity + drunkIncreaseRate, 0.0f, maxDrunkIntensity);
         
         // Set drunk intensity to the shader
-        objectRenderer.material.SetFloat("_DrunkIntensity", drunkIntensity);
+        objectRenderer.SetFloat("_DrunkIntensity", drunkIntensity);
         
         // Activate effects if the threshold is reached
         if (drunkIntensity >= drunkThreshold)

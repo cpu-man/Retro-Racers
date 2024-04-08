@@ -365,11 +365,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!23 &1009666420 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2915264136373477291, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
-  m_PrefabInstance: {fileID: 1491328306}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1491328306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -433,7 +428,7 @@ PrefabInstance:
     - target: {fileID: 4825640850189436920, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: objectRenderer
       value: 
-      objectReference: {fileID: 1009666420}
+      objectReference: {fileID: 2100000, guid: e94dabcf8a7763a49a89d33374d75837, type: 2}
     - target: {fileID: 5274623826413517201, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.9000244
