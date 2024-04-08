@@ -5,7 +5,7 @@ Shader "Drunk"
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "black" {}
-		//_DrunkIntensity ("Drunk Intensity", Range(0, 1)) = 0
+		_DrunkIntensity ("Drunk Intensity", Range(0, 1)) = 0
 	}
 	Subshader
 	{
@@ -16,6 +16,7 @@ Shader "Drunk"
 			#pragma fragment pixel_shader
 			#pragma target 2.0
 
+			float _DrunkIntensity;
 			//#include "UnityCG.cginc"
 
 			sampler2D _MainTex;
@@ -32,21 +33,21 @@ Shader "Drunk"
 				// Invert y-coordinate
 				uv.y = 1.0 - uv.y;
 
-				//float effectStrength = _DrunkIntensity * 0.05;
-				uv.x+=cos(uv.y*2.0+_Time.g)*0.05;
-				uv.y+=sin(uv.x*2.0+_Time.g)*0.05;
+				float effectStrength = _DrunkIntensity * 0.05;
+				uv.x+=(cos(uv.y*2.0+_Time.g)*0.05)*_DrunkIntensity;
+				uv.y+=(sin(uv.x*2.0+_Time.g)*0.05)*_DrunkIntensity;
 				//uv.x+=cos(uv.y*2.0+ _Time.g) * effectStrength;
 				//uv.y+=sin(uv.x*2.0+ _Time.g) * effectStrength;
 				
 				float offset = sin(_Time.g *0.5) * 0.01;
 				
 				float4 a = tex2D(_MainTex,uv);    
-				float4 b = tex2D(_MainTex,uv-float2(sin(offset),0.0));    
-				float4 c = tex2D(_MainTex,uv+float2(sin(offset),0.0));    
-				float4 d = tex2D(_MainTex,uv-float2(0.0,sin(offset)));    
-				float4 e = tex2D(_MainTex,uv+float2(0.0,sin(offset)));
+				float4 b = tex2D(_MainTex,uv-float2(sin(offset),0.0))*_DrunkIntensity;    
+				float4 c = tex2D(_MainTex,uv+float2(sin(offset),0.0))*_DrunkIntensity;    
+				float4 d = tex2D(_MainTex,uv-float2(0.0,sin(offset)))*_DrunkIntensity;    
+				float4 e = tex2D(_MainTex,uv+float2(0.0,sin(offset)))*_DrunkIntensity;
 				
-				return (a+b+c+d+e)/5.0;
+				return (a+b+c+d+e)/ (1 + _DrunkIntensity*4);
 
 			}
 			ENDCG
