@@ -80,9 +80,33 @@ public class DrunkMechanic : MonoBehaviour
         carController.verticalInput = verticalInput;
         carController.horizontalInput = horizontalInput;
     }
+    IEnumerator DrinkWithDelay(float delayTime, float delayTimeAfterSound)
+    {
+        // Wait for the specified delay time
+        yield return new WaitForSeconds(delayTime);
+        
+        // Play the sound for the bottle
+        PlayBottleSound();
+    
+        // Wait for additional delay if needed (adjust as necessary)
+        yield return new WaitForSeconds(delayTimeAfterSound);
+    
+        // Increase drunk intensity
+        drunkIntensity = Mathf.Clamp(drunkIntensity + drunkIncreaseRate, 0.0f, maxDrunkIntensity);
+    
+        // Set drunk intensity to the shader
+        objectRenderer.SetFloat("_DrunkIntensity", drunkIntensity);
+    
+        // Activate effects if the threshold is reached
+        if (drunkIntensity >= drunkThreshold)
+        {
+            effectsActivated = true;
+        }
+    }
 
     void Drink()
     {
+        /*
         drunkIntensity = Mathf.Clamp(drunkIntensity + drunkIncreaseRate, 0.0f, maxDrunkIntensity);
         
         // Set drunk intensity to the shader
@@ -93,6 +117,9 @@ public class DrunkMechanic : MonoBehaviour
         {
             effectsActivated = true;
         }
+        */
+        // Start coroutine with a delay of 1 second (adjust as needed)
+        StartCoroutine(DrinkWithDelay(2.0f, 0.0f));
 
         // Adjust input latency and delay based on drunk intensity
         inputLatency = Mathf.Lerp(0.0f, maxLatency, drunkIntensity / maxDrunkIntensity);
@@ -103,12 +130,15 @@ public class DrunkMechanic : MonoBehaviour
         if (bottleAnimator != null)
         {
             bottleAnimator.SetTrigger("Drink");
-            
-            // Play the bottle sound
-            if (bottleAudioSource != null && bottleAudioSource.clip != null)
-            {
-                bottleAudioSource.Play();
-            }
+        }
+    }
+    void PlayBottleSound()
+    {
+        // Add code here to play the sound for the bottle
+        // Play the bottle sound
+        if (bottleAudioSource != null && bottleAudioSource.clip != null)
+        {
+            bottleAudioSource.Play();
         }
     }
 
