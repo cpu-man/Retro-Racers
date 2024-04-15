@@ -7,6 +7,8 @@ public class wheelController : MonoBehaviour
     public DrunkMechanic drunkMechanic;
     
     public Engine engine; // Reference to the Engine script
+    public AudioSource StartaccelerationSound;
+    public AudioSource accelerationSound; // Reference to the AudioSource component for the acceleration sound
 
     [SerializeField] Transform steeringWheelTrans;
 
@@ -46,6 +48,9 @@ public class wheelController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         if (centerOfGravity) { rigidBody.centerOfMass = centerOfGravity.localPosition; }
+        
+        // Get the AudioSource component attached to the car object
+       // accelerationSound = GetComponentInChildren<AudioSource>();
 
         /*
         // Adjust center of mass vertically, to help prevent the car from rolling
@@ -84,7 +89,36 @@ public class wheelController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
         StartCoroutine(applyControls(verticalInput, horizontalInput));
+        StartCoroutine(FadeAccelerationSound(verticalInput)); // Start the fading coroutine
 
+    }
+    IEnumerator FadeAccelerationSound(float verticalInput)
+    {
+        // Define the time it takes for the sound to fade out completely
+        float fadeDuration = 1f; // You can adjust this value as needed
+
+        // Check if the car is slowing down (decelerating)
+        if (verticalInput <= 0)
+        {
+            // Gradually reduce the volume of the acceleration sound over the specified duration
+            float timer = 0f;
+            float startVolume = accelerationSound.volume;
+
+            while (timer < fadeDuration)
+            {
+                timer += Time.deltaTime;
+                accelerationSound.volume = Mathf.Lerp(startVolume, 0f, timer / fadeDuration);
+                yield return null;
+            }
+
+            // Ensure the volume is set to 0 when fading is complete
+            accelerationSound.volume = 0f;
+        }
+        else
+        {
+            // Reset the volume to its original value if the car is accelerating
+            accelerationSound.volume = 1f;
+        }
     }
     IEnumerator applyControls(float verticalInput, float horizontalInput){
     
@@ -139,6 +173,26 @@ public class wheelController : MonoBehaviour
         float engineTorque = engine.GetCurrentTorque();
         frontRight.motorTorque = engineTorque;
         frontLeft.motorTorque = engineTorque;
+        
+        // Check if the car is accelerating (moving forward)
+        //Debug.Log(rigidBody.linearVelocity.magnitude);
+        if (rigidBody.linearVelocity.magnitude > 0.1f )
+        {
+            accelerationSound.pitch =  rigidBody.linearVelocity.magnitude/ 30f;
+            if (!accelerationSound.isPlaying)
+            {  
+                accelerationSound.Play();
+                StartaccelerationSound.Stop();
+            }
+        }
+        else
+        {
+            // Stop acceleration sound if not accelerating
+            StartaccelerationSound.Play();
+            accelerationSound.Stop();
+        }
+        
+        
 
         // Modify steering
         float currentTurnAngle = maxTurnAngle * horizontalInput;

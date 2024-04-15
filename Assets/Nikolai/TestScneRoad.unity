@@ -449,6 +449,14 @@ PrefabInstance:
       propertyPath: m_BoundingSphereOverride.z
       value: 1.6905131e+31
       objectReference: {fileID: 0}
+    - target: {fileID: 6794181987514414702, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: b91a43f3fe200bf448bd410c97ee3e93, type: 3}
+    - target: {fileID: 6794181987514414702, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b91a43f3fe200bf448bd410c97ee3e93, type: 3}
     - target: {fileID: 7171364141609643169, guid: a4c4d289bd43b794c90aa03c096279ef, type: 3}
       propertyPath: m_TargetDisplay
       value: 2
