@@ -178,7 +178,7 @@ public class wheelController : MonoBehaviour
         //Debug.Log(rigidBody.linearVelocity.magnitude);
         if (rigidBody.linearVelocity.magnitude > 0.1f )
         {
-            accelerationSound.pitch =  rigidBody.linearVelocity.magnitude/ 30f;
+            accelerationSound.pitch =  rigidBody.linearVelocity.magnitude/ 40f;
             if (!accelerationSound.isPlaying)
             {  
                 accelerationSound.Play();
