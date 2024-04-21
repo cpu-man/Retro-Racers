@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Nikolai/TestScneRoad.unity
     guid: 71d258b3f0b225a45b4b729483c3a7dc
+  - enabled: 1
+    path: Assets/Scenes/City.unity
+    guid: 97e5b823171324343b23f6b444a7629a
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
