@@ -1267,7 +1267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae29fb261f8fc04eabd7f585d1dce86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: e94dabcf8a7763a49a89d33374d75837, type: 2}
+  material: {fileID: 2100000, guid: e3aafae66d3b77f4b94f1c0e167dcd99, type: 2}
 --- !u!1 &2966958470998174287
 GameObject:
   m_ObjectHideFlags: 0
@@ -2066,7 +2066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6fc0b766e413a42bc7b45f0a3e4135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectRenderer: {fileID: 2100000, guid: e94dabcf8a7763a49a89d33374d75837, type: 2}
+  objectRenderer: {fileID: 2100000, guid: e3aafae66d3b77f4b94f1c0e167dcd99, type: 2}
   maxDrunkIntensity: 6
   drunkIncreaseRate: 0.6
   drunkThreshold: 0.5
