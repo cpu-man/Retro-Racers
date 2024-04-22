@@ -35,6 +35,7 @@ public class DrunkMechanic : MonoBehaviour
         // Ensure the objectRenderer reference is assigned
         if (objectRenderer == null)
         {
+            Debug.Log(name);
             Debug.LogError("Object renderer reference is not assigned.");
             return;
         }
